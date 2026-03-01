@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Science-backed psychological assessments for self-discovery. Understand your schemas, personality patterns, and behavioral tendencies with clarity and compassion.">
+<title>MindArchitect — Know Yourself Deeply</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   CSS CUSTOM PROPERTIES — DESIGN TOKENS
+   ═══════════════════════════════════════════ */
+:root {
+  /* Calming, warm-neutral palette */
+  --bg-primary: #FAF8F5;
+  --bg-secondary: #F3F0EB;
+  --bg-card: #FFFFFF;
+  --bg-elevated: #FFFEFA;
+  --bg-dark: #1A1814;
+  --bg-dark-card: #252219;
+
+  --text-primary: #2C2823;
+  --text-secondary: #6B6560;
+  --text-tertiary: #9B9590;
+  --text-inverse: #FAF8F5;
+  --text-accent: #8B6914;
+
+  /* Warm gold / amber accent — conveys wisdom, not urgency */
+  --accent: #B8860B;
+  --accent-soft: #D4A843;
+  --accent-muted: rgba(184, 134, 11, 0.08);
+  --accent-glow: rgba(184, 134, 11, 0.15);
+
+  /* Semantic colours */
+  --trust-green: #4A7C59;
+  --calm-blue: #5B7B95;
+  --warm-rose: #A67B7B;
+  --sage: #7A8B6F;
+
+  /* Spacing scale (8px base) */
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;  --sp-3: 0.75rem;
+  --sp-4: 1rem;     --sp-5: 1.25rem;  --sp-6: 1.5rem;
+  --sp-8: 2rem;     --sp-10: 2.5rem;  --sp-12: 3rem;
+  --sp-16: 4rem;    --sp-20: 5rem;    --sp-24: 6rem;
+  --sp-32: 8rem;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --fs-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+  --fs-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
+  --fs-base: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --fs-md: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.65vw, 1.6rem);
+  --fs-xl: clamp(1.6rem, 1.3rem + 1.3vw, 2.4rem);
+  --fs-2xl: clamp(2rem, 1.6rem + 1.8vw, 3.2rem);
+  --fs-hero: clamp(2.4rem, 1.8rem + 2.5vw, 4.2rem);
+
+  /* Borders & Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --border-subtle: 1px solid rgba(44, 40, 35, 0.06);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(44, 40, 35, 0.04);
+  --shadow-md: 0 4px 16px rgba(44, 40, 35, 0.06);
+  --shadow-lg: 0 8px 32px rgba(44, 40, 35, 0.08);
+  --shadow-xl: 0 16px 48px rgba(44, 40, 35, 0.10);
+  --shadow-glow: 0 0 40px rgba(184, 134, 11, 0.06);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 200ms;
+  --duration-base: 400ms;
+  --duration-slow: 700ms;
+}
+
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+/* Focus states for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--accent-muted);
+  color: var(--text-primary);
+}
+
+
+/* ═══════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════ */
+.container {
+  width: min(90%, 1200px);
+  margin-inline: auto;
+}
+
+.container--narrow {
+  width: min(90%, 800px);
+  margin-inline: auto;
+}
+
+.section {
+  padding: var(--sp-24) 0;
+}
+
+.section--dark {
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Scroll-triggered reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: var(--sp-5) 0;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.nav.scrolled {
+  background: rgba(250, 248, 245, 0.92);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  padding: var(--sp-3) 0;
+  box-shadow: 0 1px 0 rgba(44, 40, 35, 0.06);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__brand {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.nav__brand span {
+  color: var(--accent);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  list-style: none;
+}
+
+.nav__links a {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--duration-fast);
+  letter-spacing: 0.02em;
+}
+
+.nav__links a:hover { color: var(--text-primary); }
+
+.nav__cta {
+  font-size: var(--fs-sm) !important;
+  font-weight: 500;
+  padding: var(--sp-2) var(--sp-5);
+  background: var(--text-primary);
+  color: var(--text-inverse) !important;
+  border-radius: 100px;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.nav__cta:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.nav__mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--sp-2);
+}
+
+.nav__mobile-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text-primary);
+  transition: all var(--duration-fast);
+}
+
+@media (max-width: 768px) {
+  .nav__mobile-toggle { display: flex; }
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(250, 248, 245, 0.98);
+    backdrop-filter: blur(20px);
+    padding: var(--sp-6);
+    gap: var(--sp-4);
+    border-bottom: var(--border-subtle);
+  }
+  .nav__links.open { display: flex; }
+}
+
+
+/* ═══════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: var(--sp-32) 0 var(--sp-20);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 70vw;
+  height: 70vw;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(184, 134, 11, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(91, 123, 149, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--sp-6);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.hero__eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-6);
+}
+
+.hero__title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero__subtitle {
+  font-size: var(--fs-md);
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: var(--sp-10);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-4) var(--sp-8);
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 100px;
+  transition: all var(--duration-base) var(--ease-out);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.btn-primary svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.btn-primary:hover svg {
+  transform: translateX(3px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-4) var(--sp-6);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 100px;
+  transition: all var(--duration-fast);
+}
+
+.btn-secondary:hover { color: var(--text-primary); }
+
+.hero__microcopy {
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.hero__microcopy span {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.hero__microcopy svg {
+  width: 14px;
+  height: 14px;
+  color: var(--trust-green);
+  flex-shrink: 0;
+}
+
+/* Floating trust indicators beside hero */
+.hero__trust-float {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  z-index: 1;
+}
+
+.trust-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.trust-pill__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.trust-pill__icon--green { background: rgba(74, 124, 89, 0.1); color: var(--trust-green); }
+.trust-pill__icon--blue { background: rgba(91, 123, 149, 0.1); color: var(--calm-blue); }
+.trust-pill__icon--gold { background: var(--accent-muted); color: var(--accent); }
+
+@media (max-width: 1024px) {
+  .hero__trust-float { display: none; }
+}
+
+
+/* ═══════════════════════════════════════════
+   SECTION HEADERS (reusable)
+   ═══════════════════════════════════════════ */
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto var(--sp-16);
+}
+
+.section-header__label {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--sp-4);
+}
+
+.section-header__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-4);
+}
+
+.section-header__subtitle {
+  font-size: var(--fs-base);
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.section--dark .section-header__subtitle {
+  color: rgba(250, 248, 245, 0.6);
+}
+
+
+/* ═══════════════════════════════════════════
+   PHILOSOPHY / INTRO STRIP
+   ═══════════════════════════════════════════ */
+.philosophy {
+  padding: var(--sp-20) 0;
+  background: var(--bg-secondary);
+  border-top: var(--border-subtle);
+  border-bottom: var(--border-subtle);
+}
+
+.philosophy__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-12);
+}
+
+.philosophy__item {
+  text-align: center;
+}
+
+.philosophy__icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--sp-5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: var(--accent-muted);
+  color: var(--accent);
+}
+
+.philosophy__item h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  margin-bottom: var(--sp-3);
+}
+
+.philosophy__item p {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .philosophy__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   ASSESSMENT CARDS
+   ═══════════════════════════════════════════ */
+.assessments {
+  padding: var(--sp-24) 0;
+}
+
+.assessments__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--sp-6);
+}
+
+.assessment-card {
+  position: relative;
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-8);
+  transition: all var(--duration-base) var(--ease-out);
+  overflow: hidden;
+}
+
+.assessment-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
+  opacity: 0;
+  transition: opacity var(--duration-base);
+}
+
+.assessment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: transparent;
+}
+
+.assessment-card:hover::before { opacity: 1; }
+
+.assessment-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-1) var(--sp-3);
+  background: var(--accent-muted);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  margin-bottom: var(--sp-5);
+}
+
+.assessment-card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: var(--sp-3);
+}
+
+.assessment-card__framing {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: var(--sp-5);
+  line-height: 1.7;
+}
+
+.assessment-card__why {
+  margin-bottom: var(--sp-5);
+}
+
+.assessment-card__why-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: var(--sp-2);
+}
+
+.assessment-card__why p {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.assessment-card__discover {
+  margin-bottom: var(--sp-6);
+  padding: var(--sp-4);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.assessment-card__discover-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: var(--sp-2);
+}
+
+.assessment-card__discover ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.assessment-card__discover li {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  line-height: 1.5;
+}
+
+.assessment-card__discover li::before {
+  content: '◆';
+  color: var(--accent-soft);
+  font-size: 6px;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.assessment-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding-top: var(--sp-5);
+  border-top: var(--border-subtle);
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+}
+
+.assessment-card__meta span {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.assessment-card__meta svg {
+  width: 14px;
+  height: 14px;
+}
+
+.assessment-card__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-left: auto;
+  font-weight: 500;
+  color: var(--accent);
+  transition: gap var(--duration-fast) var(--ease-out);
+}
+
+.assessment-card:hover .assessment-card__cta {
+  gap: var(--sp-3);
+}
+
+.assessment-card__cta svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.assessment-card:hover .assessment-card__cta svg {
+  transform: translateX(2px);
+}
+
+@media (max-width: 768px) {
+  .assessments__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   KNOW YOURSELF — SCHEMA TYPES & MODES
+   ═══════════════════════════════════════════ */
+.know-yourself {
+  padding: var(--sp-24) 0;
+  background: var(--bg-secondary);
+}
+
+.schema-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-12);
+  flex-wrap: wrap;
+}
+
+.schema-tab {
+  padding: var(--sp-2) var(--sp-5);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-tertiary);
+  border-radius: 100px;
+  transition: all var(--duration-fast);
+  border: 1px solid transparent;
+}
+
+.schema-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.schema-tab.active {
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border-color: rgba(44, 40, 35, 0.08);
+  box-shadow: var(--shadow-sm);
+}
+
+.schema-content {
+  display: none;
+}
+
+.schema-content.active {
+  display: block;
+  animation: fadeIn var(--duration-base) var(--ease-out);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.schema-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--sp-5);
+}
+
+.schema-item {
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--sp-6);
+  transition: all var(--duration-base) var(--ease-out);
+  cursor: default;
+}
+
+.schema-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.schema-item__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  margin-bottom: var(--sp-2);
+}
+
+.schema-item__essence {
+  font-size: var(--fs-xs);
+  color: var(--accent);
+  font-style: italic;
+  margin-bottom: var(--sp-3);
+}
+
+.schema-item__desc {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: var(--sp-3);
+}
+
+.schema-item__example {
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  padding: var(--sp-3);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  line-height: 1.6;
+  border-left: 2px solid var(--accent-muted);
+}
+
+.schema-item__example strong {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+
+/* ═══════════════════════════════════════════
+   PERSONALITY TYPES
+   ═══════════════════════════════════════════ */
+.personality {
+  padding: var(--sp-24) 0;
+}
+
+.personality-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--sp-5);
+}
+
+.personality-card {
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.personality-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--accent));
+  transform: scaleX(0);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.personality-card:hover::after {
+  transform: scaleX(1);
+}
+
+.personality-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.personality-card__type {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: var(--sp-3);
+}
+
+.personality-card__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  margin-bottom: var(--sp-2);
+}
+
+.personality-card__tagline {
+  font-size: var(--fs-sm);
+  color: var(--accent);
+  font-style: italic;
+  margin-bottom: var(--sp-4);
+}
+
+.personality-card__desc {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+
+/* ═══════════════════════════════════════════
+   SYNDROMES & PATTERNS (Awareness, not diagnosis)
+   ═══════════════════════════════════════════ */
+.awareness {
+  padding: var(--sp-24) 0;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.awareness__disclaimer {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--sp-12);
+  padding: var(--sp-5) var(--sp-6);
+  background: rgba(91, 123, 149, 0.06);
+  border: 1px solid rgba(91, 123, 149, 0.1);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  color: var(--calm-blue);
+  line-height: 1.7;
+}
+
+.awareness__disclaimer svg {
+  display: inline;
+  width: 16px;
+  height: 16px;
+  vertical-align: -3px;
+  margin-right: var(--sp-1);
+}
+
+.patterns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--sp-5);
+}
+
+.pattern-card {
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--sp-6);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.pattern-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.pattern-card__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  margin-bottom: var(--sp-2);
+}
+
+.pattern-card__signal {
+  font-size: var(--fs-xs);
+  color: var(--warm-rose);
+  margin-bottom: var(--sp-3);
+  font-style: italic;
+}
+
+.pattern-card__desc {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: var(--sp-3);
+}
+
+.pattern-card__reflection {
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  padding: var(--sp-3);
+  background: rgba(166, 123, 123, 0.04);
+  border-radius: var(--radius-sm);
+  border-left: 2px solid rgba(166, 123, 123, 0.15);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+
+/* ═══════════════════════════════════════════
+   SOCIAL PROOF / TESTIMONIALS
+   ═══════════════════════════════════════════ */
+.proof {
+  padding: var(--sp-24) 0;
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+}
+
+.proof__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--sp-6);
+}
+
+.proof-card {
+  padding: var(--sp-8);
+  background: var(--bg-dark-card);
+  border: 1px solid rgba(250, 248, 245, 0.06);
+  border-radius: var(--radius-lg);
+}
+
+.proof-card__quote {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(250, 248, 245, 0.85);
+  margin-bottom: var(--sp-6);
+}
+
+.proof-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.proof-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--bg-dark);
+}
+
+.proof-card__name {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.proof-card__role {
+  font-size: var(--fs-xs);
+  color: rgba(250, 248, 245, 0.45);
+}
+
+
+/* ═══════════════════════════════════════════
+   FAQ
+   ═══════════════════════════════════════════ */
+.faq {
+  padding: var(--sp-24) 0;
+}
+
+.faq__list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.faq-item {
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow var(--duration-fast);
+}
+
+.faq-item:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-item__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-5) var(--sp-6);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+  background: var(--bg-card);
+  transition: background var(--duration-fast);
+}
+
+.faq-item__question:hover {
+  background: var(--bg-elevated);
+}
+
+.faq-item__icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.faq-item__icon svg {
+  width: 12px;
+  height: 12px;
+  color: var(--text-tertiary);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.faq-item.open .faq-item__icon {
+  background: var(--accent-muted);
+}
+
+.faq-item.open .faq-item__icon svg {
+  transform: rotate(45deg);
+  color: var(--accent);
+}
+
+.faq-item__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-base) var(--ease-out);
+}
+
+.faq-item.open .faq-item__answer {
+  max-height: 400px;
+}
+
+.faq-item__answer-inner {
+  padding: 0 var(--sp-6) var(--sp-6);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+
+/* ═══════════════════════════════════════════
+   FINAL CTA
+   ═══════════════════════════════════════════ */
+.final-cta {
+  padding: var(--sp-32) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, var(--accent-muted) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.final-cta__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 300;
+  line-height: 1.3;
+  margin-bottom: var(--sp-4);
+  position: relative;
+}
+
+.final-cta__subtitle {
+  font-size: var(--fs-base);
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin-bottom: var(--sp-8);
+  max-width: 500px;
+  margin-inline: auto;
+  position: relative;
+}
+
+.final-cta .btn-primary {
+  position: relative;
+}
+
+.final-cta__micro {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  position: relative;
+}
+
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.footer {
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+  padding: var(--sp-16) 0 var(--sp-8);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--sp-12);
+  padding-bottom: var(--sp-12);
+  border-bottom: 1px solid rgba(250, 248, 245, 0.08);
+}
+
+.footer__brand {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  margin-bottom: var(--sp-4);
+}
+
+.footer__brand span { color: var(--accent-soft); }
+
+.footer__desc {
+  font-size: var(--fs-sm);
+  color: rgba(250, 248, 245, 0.5);
+  line-height: 1.75;
+  max-width: 320px;
+}
+
+.footer__col h4 {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 245, 0.4);
+  margin-bottom: var(--sp-4);
+}
+
+.footer__col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.footer__col a {
+  font-size: var(--fs-sm);
+  color: rgba(250, 248, 245, 0.6);
+  transition: color var(--duration-fast);
+}
+
+.footer__col a:hover { color: var(--text-inverse); }
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--sp-8);
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+}
+
+.footer__bottom p {
+  font-size: var(--fs-xs);
+  color: rgba(250, 248, 245, 0.35);
+}
+
+.footer__trust {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  font-size: var(--fs-xs);
+  color: rgba(250, 248, 245, 0.35);
+}
+
+.footer__trust span {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.footer__trust svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 768px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-8);
+  }
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   GLOBAL RESPONSIVE REFINEMENTS
+   ═══════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .section { padding: var(--sp-16) 0; }
+  .hero { padding: var(--sp-24) 0 var(--sp-16); min-height: auto; }
+}
+
+/* Subtle grain texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="#" class="nav__brand" aria-label="MindArchitect Home">Mind<span>Architect</span></a>
+    <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('open'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('open'))">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="#assessments">Assessments</a></li>
+      <li><a href="#know-yourself">Know Yourself</a></li>
+      <li><a href="#patterns">Awareness</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#start" class="nav__cta">Begin Your Journey</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+     ═══════════════════════════════════════════ -->
+<header class="hero" id="home">
+  <div class="container">
+    <div class="hero__content reveal">
+      <p class="hero__eyebrow">Psychological Self-Discovery Platform</p>
+      <h1 class="hero__title">
+        Understand the patterns<br>
+        that silently <em>shape your life</em>
+      </h1>
+      <p class="hero__subtitle">
+        Structured, research-backed assessments that help you see your emotional 
+        wiring, behavioural tendencies, and personality patterns — with clarity, 
+        not judgment.
+      </p>
+      <div class="hero__actions">
+        <a href="#assessments" class="btn-primary">
+          Explore Assessments
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="#philosophy" class="btn-secondary">
+          How it works
+        </a>
+      </div>
+      <p class="hero__microcopy">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Private & encrypted
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          No diagnosis — only awareness
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+          5–20 min each
+        </span>
+      </p>
+    </div>
+  </div>
+  <!-- Floating trust pills -->
+  <div class="hero__trust-float" aria-hidden="true">
+    <div class="trust-pill reveal reveal-delay-1">
+      <div class="trust-pill__icon trust-pill__icon--gold">✦</div>
+      <div>
+        <div style="font-weight:500;color:var(--text-primary);font-size:0.8rem;">Research-Backed</div>
+        <div style="font-size:0.7rem;">Grounded in clinical frameworks</div>
+      </div>
+    </div>
+    <div class="trust-pill reveal reveal-delay-2">
+      <div class="trust-pill__icon trust-pill__icon--green">⊘</div>
+      <div>
+        <div style="font-weight:500;color:var(--text-primary);font-size:0.8rem;">Non-Judgmental</div>
+        <div style="font-size:0.7rem;">Awareness, not labels</div>
+      </div>
+    </div>
+    <div class="trust-pill reveal reveal-delay-3">
+      <div class="trust-pill__icon trust-pill__icon--blue">◎</div>
+      <div>
+        <div style="font-weight:500;color:var(--text-primary);font-size:0.8rem;">Built for Professionals</div>
+        <div style="font-size:0.7rem;">Founders · Leaders · Ambitious minds</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     PHILOSOPHY / 3-PILLAR STRIP
+     ═══════════════════════════════════════════ -->
+<section class="philosophy" id="philosophy" aria-labelledby="philosophy-title">
+  <h2 id="philosophy-title" class="visually-hidden">Our Philosophy</h2>
+  <div class="container">
+    <div class="philosophy__grid">
+      <div class="philosophy__item reveal">
+        <div class="philosophy__icon">◇</div>
+        <h3>Clarity, Not Confusion</h3>
+        <p>Complex psychological concepts distilled into clear, structured insights you can actually use — at work, in relationships, and within yourself.</p>
+      </div>
+      <div class="philosophy__item reveal reveal-delay-1">
+        <div class="philosophy__icon">⟡</div>
+        <h3>Science, Not Speculation</h3>
+        <p>Every assessment draws from established frameworks in schema therapy, personality psychology, and cognitive-behavioural research.</p>
+      </div>
+      <div class="philosophy__item reveal reveal-delay-2">
+        <div class="philosophy__icon">◌</div>
+        <h3>Growth, Not Diagnosis</h3>
+        <p>This is not therapy, and it is not a clinical tool. It is a mirror — designed to help you notice what you haven't noticed before.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     ASSESSMENT CARDS
+     ═══════════════════════════════════════════ -->
+<section class="assessments section" id="assessments" aria-labelledby="assessments-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-header__label">Personal Assessments</p>
+      <h2 class="section-header__title" id="assessments-title">Structured journeys into self-understanding</h2>
+      <p class="section-header__subtitle">Each assessment is a carefully designed exploration. There are no right or wrong answers — only honest ones.</p>
+    </div>
+
+    <div class="assessments__grid">
+
+      <!-- Card 1: Schema Assessment -->
+      <article class="assessment-card reveal" style="--card-accent: #B8860B;">
+        <div class="assessment-card__badge">Core Framework</div>
+        <h3 class="assessment-card__title">Early Maladaptive Schemas</h3>
+        <p class="assessment-card__framing">
+          "Why do I keep ending up in the same situations — even when I know better?"
+        </p>
+        <div class="assessment-card__why">
+          <p class="assessment-card__why-label">Why this matters</p>
+          <p>Schemas are deep emotional blueprints formed in childhood. They quietly drive how you relate to people, react under stress, and interpret everyday situations — often without your awareness.</p>
+        </div>
+        <div class="assessment-card__discover">
+          <p class="assessment-card__discover-label">What you'll discover</p>
+          <ul>
+            <li>Which of the 18 schema patterns are active in your life</li>
+            <li>How these show up in relationships and decisions</li>
+            <li>Your dominant schema domain (emotional needs that weren't met)</li>
+          </ul>
+        </div>
+        <div class="assessment-card__meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+            15–20 min
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            90 items
+          </span>
+          <a href="#" class="assessment-card__cta">
+            Begin
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2: Schema Modes -->
+      <article class="assessment-card reveal reveal-delay-1" style="--card-accent: #5B7B95;">
+        <div class="assessment-card__badge">Emotional States</div>
+        <h3 class="assessment-card__title">Schema Modes</h3>
+        <p class="assessment-card__framing">
+          "Why do I become a completely different person in certain moments?"
+        </p>
+        <div class="assessment-card__why">
+          <p class="assessment-card__why-label">Why this matters</p>
+          <p>Modes are the emotional "states" you shift into — the inner critic, the people-pleaser, the detached protector. Understanding your modes reveals the moment-to-moment navigation system of your inner world.</p>
+        </div>
+        <div class="assessment-card__discover">
+          <p class="assessment-card__discover-label">What you'll discover</p>
+          <ul>
+            <li>Your dominant emotional modes under stress and at rest</li>
+            <li>Which coping modes protect you — and which ones hold you back</li>
+            <li>How modes interact and create internal conflict</li>
+          </ul>
+        </div>
+        <div class="assessment-card__meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+            12–15 min
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            76 items
+          </span>
+          <a href="#" class="assessment-card__cta">
+            Begin
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3: Personality -->
+      <article class="assessment-card reveal reveal-delay-2" style="--card-accent: #7A8B6F;">
+        <div class="assessment-card__badge">Personality</div>
+        <h3 class="assessment-card__title">Personality Type Assessment</h3>
+        <p class="assessment-card__framing">
+          "What is my natural operating system — and how do others experience me?"
+        </p>
+        <div class="assessment-card__why">
+          <p class="assessment-card__why-label">Why this matters</p>
+          <p>Your personality type isn't a box — it's a lens. It reveals how you process information, make decisions, relate to authority, and handle uncertainty. For professionals and founders, this clarity is leverage.</p>
+        </div>
+        <div class="assessment-card__discover">
+          <p class="assessment-card__discover-label">What you'll discover</p>
+          <ul>
+            <li>Your core personality structure and communication style</li>
+            <li>Natural strengths and blind spots in leadership</li>
+            <li>How your personality interacts with your schemas</li>
+          </ul>
+        </div>
+        <div class="assessment-card__meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+            10–15 min
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            60 items
+          </span>
+          <a href="#" class="assessment-card__cta">
+            Begin
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 4: Behavioural Patterns -->
+      <article class="assessment-card reveal reveal-delay-3" style="--card-accent: #A67B7B;">
+        <div class="assessment-card__badge">Behavioural</div>
+        <h3 class="assessment-card__title">Behavioural Pattern Screening</h3>
+        <p class="assessment-card__framing">
+          "Are there invisible habits running my life that I've never questioned?"
+        </p>
+        <div class="assessment-card__why">
+          <p class="assessment-card__why-label">Why this matters</p>
+          <p>Behavioural patterns — procrastination, perfectionism, avoidance, people-pleasing — often feel like personality traits. They're not. They're strategies your mind learned, and they can be understood and shifted.</p>
+        </div>
+        <div class="assessment-card__discover">
+          <p class="assessment-card__discover-label">What you'll discover</p>
+          <ul>
+            <li>Recurring behavioural loops that drain your energy</li>
+            <li>Triggers and emotional contexts behind each pattern</li>
+            <li>Which patterns serve you and which ones cost you</li>
+          </ul>
+        </div>
+        <div class="assessment-card__meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+            8–12 min
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            48 items
+          </span>
+          <a href="#" class="assessment-card__cta">
+            Begin
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 5: Psychological Syndromes Awareness -->
+      <article class="assessment-card reveal reveal-delay-3" style="--card-accent: #8B6914;">
+        <div class="assessment-card__badge">Awareness</div>
+        <h3 class="assessment-card__title">Syndrome Awareness Screening</h3>
+        <p class="assessment-card__framing">
+          "Could some of my struggles have a name — and understanding — I've been missing?"
+        </p>
+        <div class="assessment-card__why">
+          <p class="assessment-card__why-label">Why this matters</p>
+          <p>Imposter syndrome, burnout, emotional exhaustion — these aren't character flaws. They are recognisable psychological patterns with well-studied origins. Naming what you experience is the beginning of navigating it.</p>
+        </div>
+        <div class="assessment-card__discover">
+          <p class="assessment-card__discover-label">What you'll discover</p>
+          <ul>
+            <li>Which psychological syndromes may resonate with your experience</li>
+            <li>How these patterns manifest in professional and personal life</li>
+            <li>Pathways toward further understanding (not self-diagnosis)</li>
+          </ul>
+        </div>
+        <div class="assessment-card__meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+            5–10 min
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            36 items
+          </span>
+          <a href="#" class="assessment-card__cta">
+            Begin
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 6: Disorders Awareness -->
+      <article class="assessment-card reveal reveal-delay-4" style="--card-accent: #5B7B95;">
+        <div class="assessment-card__badge">Educational</div>
+        <h3 class="assessment-card__title">Mental Health Awareness Guide</h3>
+        <p class="assessment-card__framing">
+          "I want to understand common mental health conditions — without fear or stigma."
+        </p>
+        <div class="assessment-card__why">
+          <p class="assessment-card__why-label">Why this matters</p>
+          <p>Awareness reduces fear. Understanding conditions like anxiety, depression, ADHD, and OCD — even at a basic level — helps you support yourself and the people around you with empathy instead of assumptions.</p>
+        </div>
+        <div class="assessment-card__discover">
+          <p class="assessment-card__discover-label">What you'll explore</p>
+          <ul>
+            <li>Clear, non-clinical explanations of common conditions</li>
+            <li>How these may overlap with personality and schemas</li>
+            <li>When and how to seek professional guidance</li>
+          </ul>
+        </div>
+        <div class="assessment-card__meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+            Reading · 10 min
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Guided content
+          </span>
+          <a href="#" class="assessment-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     KNOW YOURSELF — SCHEMAS, MODES, TYPES
+     ═══════════════════════════════════════════ -->
+<section class="know-yourself section" id="know-yourself" aria-labelledby="know-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-header__label">Know Yourself</p>
+      <h2 class="section-header__title" id="know-title">The frameworks behind your inner world</h2>
+      <p class="section-header__subtitle">These aren't abstract theories — they are maps of how you think, feel, and react. Explore them with curiosity, not judgment.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="schema-tabs reveal" role="tablist" aria-label="Psychological framework categories">
+      <button class="schema-tab active" role="tab" aria-selected="true" aria-controls="tab-schemas" onclick="switchTab(this, 'tab-schemas')">Schema Types</button>
+      <button class="schema-tab" role="tab" aria-selected="false" aria-controls="tab-modes" onclick="switchTab(this, 'tab-modes')">Schema Modes</button>
+      <button class="schema-tab" role="tab" aria-selected="false" aria-controls="tab-personality" onclick="switchTab(this, 'tab-personality')">Personality Types</button>
+    </div>
+
+    <!-- Schema Types Content -->
+    <div class="schema-content active" id="tab-schemas" role="tabpanel">
+      <div class="schema-grid">
+        <div class="schema-item reveal">
+          <h3 class="schema-item__name">Abandonment</h3>
+          <p class="schema-item__essence">The fear of being left behind</p>
+          <p class="schema-item__desc">A deep conviction that the people you care about will eventually leave, let you down, or choose someone else. It creates a quiet urgency in relationships — a need to hold on tightly or to leave first.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Checking your phone constantly when a friend hasn't responded. Assuming silence means rejection.</div>
+        </div>
+        <div class="schema-item reveal reveal-delay-1">
+          <h3 class="schema-item__name">Defectiveness</h3>
+          <p class="schema-item__essence">The belief that something is fundamentally wrong with you</p>
+          <p class="schema-item__desc">Not about specific flaws — it's a pervasive sense that if people really knew you, they wouldn't stay. It drives perfectionism, people-pleasing, or withdrawal as shields against being truly seen.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Deflecting compliments instantly. Believing your success is luck and your mistakes are proof.</div>
+        </div>
+        <div class="schema-item reveal reveal-delay-2">
+          <h3 class="schema-item__name">Emotional Deprivation</h3>
+          <p class="schema-item__essence">The quiet ache of unmet emotional needs</p>
+          <p class="schema-item__desc">A sense that your emotional needs — to be understood, cared for, protected — will never be adequately met by anyone. You may stop asking because you've learned not to expect.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Being in a room full of people but feeling fundamentally alone. Not knowing how to ask for comfort.</div>
+        </div>
+        <div class="schema-item reveal reveal-delay-3">
+          <h3 class="schema-item__name">Subjugation</h3>
+          <p class="schema-item__essence">Sacrificing your needs to keep the peace</p>
+          <p class="schema-item__desc">Habitually suppressing your own desires, opinions, or feelings because you believe expressing them will lead to conflict, rejection, or punishment. Over time, you may lose touch with what you actually want.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Saying "I'm fine with whatever" in every decision. A slow-building resentment you can't quite name.</div>
+        </div>
+        <div class="schema-item reveal reveal-delay-4">
+          <h3 class="schema-item__name">Unrelenting Standards</h3>
+          <p class="schema-item__essence">Nothing is ever good enough — including you</p>
+          <p class="schema-item__desc">A relentless internal pressure to meet extremely high standards, often at the cost of your health, relationships, or peace of mind. Achievement feels temporary; the bar always moves upward.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Finishing a project and immediately noticing every flaw. Working 12-hour days and still feeling behind.</div>
+        </div>
+        <div class="schema-item reveal reveal-delay-4">
+          <h3 class="schema-item__name">Mistrust / Abuse</h3>
+          <p class="schema-item__essence">Expecting the worst from others</p>
+          <p class="schema-item__desc">An expectation that others will hurt, manipulate, or take advantage of you. This isn't paranoia — it's a protective filter developed from real experiences where trust was violated.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Analysing every compliment for hidden motives. Keeping people at arm's length even when you want closeness.</div>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:var(--sp-8);font-size:var(--fs-sm);color:var(--text-tertiary);">
+        Showing 6 of 18 schema types. <a href="#" style="color:var(--accent);font-weight:500;">View all schemas →</a>
+      </p>
+    </div>
+
+    <!-- Schema Modes Content -->
+    <div class="schema-content" id="tab-modes" role="tabpanel">
+      <div class="schema-grid">
+        <div class="schema-item">
+          <h3 class="schema-item__name">Vulnerable Child</h3>
+          <p class="schema-item__essence">The raw, unguarded part of you</p>
+          <p class="schema-item__desc">This is the emotional core that feels scared, sad, lonely, or overwhelmed. It surfaces when your deepest needs aren't being met — often unexpectedly, in seemingly small moments.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Tearing up at a slightly harsh email. Feeling inexplicably small during a disagreement.</div>
+        </div>
+        <div class="schema-item">
+          <h3 class="schema-item__name">Detached Protector</h3>
+          <p class="schema-item__essence">Emotional numbness as a survival strategy</p>
+          <p class="schema-item__desc">When feelings become too much, this mode shuts them off entirely. You become efficient, logical, and disconnected. It's protective in the moment but isolating over time.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Going on autopilot during conflict. Telling yourself you "don't care" when you clearly do.</div>
+        </div>
+        <div class="schema-item">
+          <h3 class="schema-item__name">Punitive Critic</h3>
+          <p class="schema-item__essence">The harsh inner voice that never relents</p>
+          <p class="schema-item__desc">An internal judge that punishes you for mistakes, imperfections, and vulnerabilities. It often sounds like a demanding parent or authority figure from your past.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> "You should've known better." "Everyone else manages this easily." "What's wrong with you?"</div>
+        </div>
+        <div class="schema-item">
+          <h3 class="schema-item__name">Compliant Surrenderer</h3>
+          <p class="schema-item__essence">Keeping everyone happy — except yourself</p>
+          <p class="schema-item__desc">This mode over-adapts to others' expectations, suppressing your own needs to avoid conflict. It masquerades as being easy-going, but beneath it lies unexpressed frustration.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Volunteering for extra work you don't want. Agreeing with opinions you privately disagree with.</div>
+        </div>
+        <div class="schema-item">
+          <h3 class="schema-item__name">Healthy Adult</h3>
+          <p class="schema-item__essence">Your most integrated, grounded self</p>
+          <p class="schema-item__desc">The mode that can observe, reflect, and respond rather than react. It sets boundaries, nurtures the vulnerable child, and quiets the inner critic. Strengthening this mode is the goal.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Pausing before reacting. Saying "I need a moment" without guilt. Making choices aligned with your values.</div>
+        </div>
+        <div class="schema-item">
+          <h3 class="schema-item__name">Overcompensator</h3>
+          <p class="schema-item__essence">Fighting the wound by becoming its opposite</p>
+          <p class="schema-item__desc">Instead of feeling powerless, you dominate. Instead of feeling inadequate, you overachieve aggressively. It's a survival flip — effective short-term, exhausting long-term.</p>
+          <div class="schema-item__example"><strong>Feels like:</strong> Needing to win every argument. Working obsessively to prove doubters wrong.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personality Types Content -->
+    <div class="schema-content" id="tab-personality" role="tabpanel">
+      <div class="personality-carousel">
+        <div class="personality-card" style="--card-accent: #B8860B;">
+          <p class="personality-card__type">Type One</p>
+          <h3 class="personality-card__name">The Reformer</h3>
+          <p class="personality-card__tagline">"There is a right way, and I must find it."</p>
+          <p class="personality-card__desc">Principled, purposeful, and self-controlled. Ones have an innate sense of what's right and wrong and an internal drive toward improvement. Their strength is integrity; their challenge is rigidity and self-criticism.</p>
+        </div>
+        <div class="personality-card" style="--card-accent: #5B7B95;">
+          <p class="personality-card__type">Type Three</p>
+          <h3 class="personality-card__name">The Achiever</h3>
+          <p class="personality-card__tagline">"I am what I accomplish."</p>
+          <p class="personality-card__desc">Adaptive, ambitious, and image-conscious. Threes naturally orient toward goals and success. Their strength is inspiring drive; their challenge is losing touch with their authentic self behind the performance.</p>
+        </div>
+        <div class="personality-card" style="--card-accent: #7A8B6F;">
+          <p class="personality-card__type">Type Five</p>
+          <h3 class="personality-card__name">The Investigator</h3>
+          <p class="personality-card__tagline">"If I understand enough, I'll feel safe."</p>
+          <p class="personality-card__desc">Perceptive, innovative, and private. Fives process the world through knowledge and observation. Their strength is deep insight; their challenge is withdrawing from the very life they're trying to understand.</p>
+        </div>
+        <div class="personality-card" style="--card-accent: #A67B7B;">
+          <p class="personality-card__type">Type Eight</p>
+          <h3 class="personality-card__name">The Challenger</h3>
+          <p class="personality-card__tagline">"I will not be controlled or vulnerable."</p>
+          <p class="personality-card__desc">Decisive, powerful, and protective. Eights move through the world with directness and intensity. Their strength is courageous leadership; their challenge is vulnerability — the thing they guard against most fiercely.</p>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:var(--sp-8);font-size:var(--fs-sm);color:var(--text-tertiary);">
+        Showing 4 of 9 types. <a href="#" style="color:var(--accent);font-weight:500;">Explore all personality types →</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PSYCHOLOGICAL SYNDROMES & BEHAVIOURAL PATTERNS
+     ═══════════════════════════════════════════ -->
+<section class="awareness section" id="patterns" aria-labelledby="awareness-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-header__label">Patterns & Awareness</p>
+      <h2 class="section-header__title" id="awareness-title">Recognise what's running in the background</h2>
+      <p class="section-header__subtitle">These are not labels or diagnoses. They are patterns that many high-functioning individuals quietly live with — and rarely name.</p>
+    </div>
+
+    <div class="awareness__disclaimer reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+      <strong>Important:</strong> This section is for self-awareness and education only. It is not a diagnostic tool and does not replace professional clinical assessment. If something resonates deeply, consider speaking with a qualified mental health professional.
+    </div>
+
+    <div class="patterns-grid">
+      <div class="pattern-card reveal">
+        <h3 class="pattern-card__name">Imposter Phenomenon</h3>
+        <p class="pattern-card__signal">Common in high achievers and first-generation professionals</p>
+        <p class="pattern-card__desc">A persistent internal experience of intellectual fraudulence despite clear evidence of competence. You attribute success to luck or timing and live in fear of being "found out."</p>
+        <div class="pattern-card__reflection">"I got this role because they couldn't find someone better" — Sound familiar? You're not alone, and you're not a fraud.</div>
+      </div>
+      <div class="pattern-card reveal reveal-delay-1">
+        <h3 class="pattern-card__name">Chronic Burnout Pattern</h3>
+        <p class="pattern-card__signal">Often mistaken for laziness or loss of motivation</p>
+        <p class="pattern-card__desc">Not just tiredness — a systematic depletion of emotional, cognitive, and physical reserves. It often follows sustained periods where you gave more than you had, without adequate recovery.</p>
+        <div class="pattern-card__reflection">"I used to love this work. Now I feel nothing." — Burnout isn't about effort; it's about the absence of recovery.</div>
+      </div>
+      <div class="pattern-card reveal reveal-delay-2">
+        <h3 class="pattern-card__name">Anxious Overachievement</h3>
+        <p class="pattern-card__signal">Productivity driven by fear rather than passion</p>
+        <p class="pattern-card__desc">Using constant work as an anxiety management strategy. The achievement is real — but the driver is dread, not desire. Rest feels dangerous because silence brings the anxiety to the surface.</p>
+        <div class="pattern-card__reflection">"I can't stop working — not because I love it, but because I can't bear what I feel when I stop."</div>
+      </div>
+      <div class="pattern-card reveal reveal-delay-3">
+        <h3 class="pattern-card__name">Emotional Avoidance</h3>
+        <p class="pattern-card__signal">Efficiency as an emotional escape mechanism</p>
+        <p class="pattern-card__desc">An unconscious pattern of keeping life so structured and busy that there's no room for uncomfortable emotions to surface. When they do, the default response is to solve, minimise, or redirect.</p>
+        <div class="pattern-card__reflection">"I don't have time to feel — I have things to do." — But the feelings don't disappear; they just get louder in quiet moments.</div>
+      </div>
+      <div class="pattern-card reveal reveal-delay-4">
+        <h3 class="pattern-card__name">Parentification Residue</h3>
+        <p class="pattern-card__signal">Carrying responsibility that was never yours to carry</p>
+        <p class="pattern-card__desc">Growing up as the "responsible one," the mediator, or the emotional caretaker of a parent. In adulthood, it shows up as difficulty receiving help, chronic self-reliance, and guilt about having needs.</p>
+        <div class="pattern-card__reflection">"I've always taken care of everyone else — I wouldn't even know how to let someone take care of me."</div>
+      </div>
+      <div class="pattern-card reveal reveal-delay-4">
+        <h3 class="pattern-card__name">Conflict Avoidance Loop</h3>
+        <p class="pattern-card__signal">Peace-keeping at the cost of authenticity</p>
+        <p class="pattern-card__desc">Systematically avoiding confrontation — not because you're calm, but because you fear the consequences of disagreement. Over time, suppressed truths create distance in the very relationships you're trying to protect.</p>
+        <div class="pattern-card__reflection">"I'd rather keep the peace than speak my mind" — but the peace you keep isn't peace; it's silence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SOCIAL PROOF / TESTIMONIALS
+     ═══════════════════════════════════════════ -->
+<section class="proof section" aria-labelledby="proof-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-header__label" style="color:var(--accent-soft);">What People Say</p>
+      <h2 class="section-header__title" id="proof-title">Moments of clarity, in their words</h2>
+      <p class="section-header__subtitle">From professionals who chose to look inward.</p>
+    </div>
+
+    <div class="proof__grid">
+      <div class="proof-card reveal">
+        <p class="proof-card__quote">"I've done therapy before, but this was the first time I saw my patterns laid out so clearly. The schema assessment gave me language for something I've felt my entire life."</p>
+        <div class="proof-card__author">
+          <div class="proof-card__avatar">A</div>
+          <div>
+            <p class="proof-card__name">Anirudh S.</p>
+            <p class="proof-card__role">Startup Founder · Bengaluru</p>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card reveal reveal-delay-1">
+        <p class="proof-card__quote">"I kept telling myself I was just a hard worker. This helped me understand that my overwork was actually driven by deep fear. That shift in understanding changed everything."</p>
+        <div class="proof-card__author">
+          <div class="proof-card__avatar">P</div>
+          <div>
+            <p class="proof-card__name">Priya M.</p>
+            <p class="proof-card__role">Senior Manager, FMCG · Mumbai</p>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card reveal reveal-delay-2">
+        <p class="proof-card__quote">"No one had ever told me that my 'easygoing' nature was actually conflict avoidance. This platform helped me see that — gently, without shame."</p>
+        <div class="proof-card__author">
+          <div class="proof-card__avatar">R</div>
+          <div>
+            <p class="proof-card__name">Raghav D.</p>
+            <p class="proof-card__role">Product Lead · Hyderabad</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+     ═══════════════════════════════════════════ -->
+<section class="faq section" id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-header__label">Common Questions</p>
+      <h2 class="section-header__title" id="faq-title">Before you begin</h2>
+      <p class="section-header__subtitle">Everything you might want to know — answered with honesty.</p>
+    </div>
+
+    <div class="faq__list">
+
+      <div class="faq-item reveal">
+        <button class="faq-item__question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          Is this a clinical diagnosis?
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer" role="region">
+          <div class="faq-item__answer-inner">
+            No. These assessments are designed for self-awareness and personal growth — not clinical diagnosis. They draw from established psychological frameworks but are not a substitute for professional evaluation. Think of them as structured mirrors, not medical reports. If your results raise questions, we always encourage speaking with a licensed professional.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-item__question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          Is my data private and secure?
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer" role="region">
+          <div class="faq-item__answer-inner">
+            Absolutely. Your assessment responses are encrypted end-to-end and stored securely. We do not share, sell, or use your data for advertising — ever. Your psychological self-exploration is private. You own your data, and you can delete it at any time.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-item__question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          Who is this designed for?
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer" role="region">
+          <div class="faq-item__answer-inner">
+            This platform is built for self-aware individuals — founders, professionals, managers, and anyone who believes that understanding themselves is a competitive and personal advantage. You don't need to be in crisis to benefit. In fact, most of our users are high-functioning individuals who simply want to understand themselves with more depth and precision.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-3">
+        <button class="faq-item__question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          Is this the same as therapy?
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer" role="region">
+          <div class="faq-item__answer-inner">
+            No — and it isn't meant to be. Therapy involves a trained clinician working with you over time. What we offer is structured self-assessment: a starting point for deeper understanding. Many of our users find that their results become powerful conversation starters in therapy, coaching, or personal reflection.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-4">
+        <button class="faq-item__question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          What psychological models are these based on?
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer" role="region">
+          <div class="faq-item__answer-inner">
+            Our assessments draw from well-established frameworks including Jeffrey Young's Schema Therapy model (Early Maladaptive Schemas and Schema Modes), established personality typology systems, and cognitive-behavioural patterns documented in peer-reviewed research. We translate these into accessible, structured experiences — without diluting the science.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FINAL CTA
+     ═══════════════════════════════════════════ -->
+<section class="final-cta section" id="start" aria-labelledby="final-cta-title">
+  <div class="container--narrow">
+    <h2 class="final-cta__title reveal" id="final-cta-title">
+      The most important relationship<br>you'll ever navigate is <em style="font-family:var(--font-display);color:var(--accent);font-style:italic;">with yourself</em>
+    </h2>
+    <p class="final-cta__subtitle reveal reveal-delay-1">
+      Begin with one assessment. You'll be surprised how much clarity 15 minutes of honest self-reflection can bring.
+    </p>
+    <div class="reveal reveal-delay-2">
+      <a href="#assessments" class="btn-primary" style="font-size:var(--fs-base);padding:var(--sp-5) var(--sp-10);">
+        Start Your Self-Discovery
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+    <p class="final-cta__micro reveal reveal-delay-3">Free to begin · No account required to explore · Results are private</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__brand">Mind<span>Architect</span></p>
+        <p class="footer__desc">A premium psychological self-discovery platform built for thoughtful individuals who believe self-understanding is not a luxury — it's a foundation.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Assessments</h4>
+        <ul>
+          <li><a href="#">Schema Types</a></li>
+          <li><a href="#">Schema Modes</a></li>
+          <li><a href="#">Personality Types</a></li>
+          <li><a href="#">Behavioural Patterns</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="#">Know Yourself</a></li>
+          <li><a href="#">Syndrome Awareness</a></li>
+          <li><a href="#">Mental Health Guide</a></li>
+          <li><a href="#">Research & Sources</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 MindArchitect. All rights reserved.</p>
+      <div class="footer__trust">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          256-bit SSL Encrypted
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          GDPR Compliant
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          No data sold — ever
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT — Minimal, accessible, performant
+     ═══════════════════════════════════════════ -->
+<script>
+// ——— Scroll-triggered reveal animations ———
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ——— Nav scroll state ———
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  const scrollY = window.scrollY;
+  nav.classList.toggle('scrolled', scrollY > 60);
+  lastScroll = scrollY;
+}, { passive: true });
+
+// ——— Tab switching ———
+function switchTab(btn, targetId) {
+  // Update tabs
+  document.querySelectorAll('.schema-tab').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
+
+  // Update content
+  document.querySelectorAll('.schema-content').forEach(c => c.classList.remove('active'));
+  document.getElementById(targetId).classList.add('active');
+}
+
+// ——— FAQ accessibility ———
+document.querySelectorAll('.faq-item__question').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const expanded = this.parentElement.classList.contains('open');
+    this.setAttribute('aria-expanded', expanded);
+  });
+});
+
+// ——— Smooth scroll for anchor links ———
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Close mobile nav if open
+      document.querySelector('.nav__links')?.classList.remove('open');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
