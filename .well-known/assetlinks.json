@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.innerly.app",
+      "sha256_cert_fingerprints": [
+        "A0:D4:02:81:1C:73:73:AF:7A:09:81:90:95:1B:F8:9F:6F:D9:29:0C:09:24:EB:95:AC:C0:B8:8E:72:B9:6D:0C"
+      ]
+    }
+  }
+]
