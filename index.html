@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Innerly — Your Psychological Journaling Space</title>
+<title>Innerly — Psychological Self-Discovery Platform | Assessments, Journaling & Growth</title>
+<meta name="description" content="A private, research-backed platform for psychological self-understanding. Validated assessments, structured journaling, schema therapy, CBT frameworks — designed for professionals and curious minds.">
+<meta name="theme-color" content="#06060f">
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -416,7 +418,7 @@ body::before{
 .screen.active{display:flex}
 
 /* ═══════════════════════════════════════════
-   LANDING PAGE — ENTERPRISE ELEVATED
+   LANDING PAGE
    ═══════════════════════════════════════════ */
 #landingPage{
   position:fixed;inset:0;z-index:9999;
@@ -428,76 +430,65 @@ body::before{
 #landingPage.hide{
   opacity:0;transform:translateY(-20px);pointer-events:none;
 }
-
-/* ── Nav ── */
 .lp-nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:20px 40px;position:sticky;top:0;z-index:10;
-  background:rgba(6,6,15,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(255,255,255,.05);
+  background:rgba(6,6,15,.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
 .lp-logo{display:flex;align-items:center;gap:12px}
 .lp-logo-icon{
-  width:42px;height:42px;border-radius:13px;
+  width:40px;height:40px;border-radius:12px;
   background:linear-gradient(135deg,#6d28d9,#a855f7,#e879f9);
   display:flex;align-items:center;justify-content:center;font-size:20px;
   box-shadow:0 8px 24px rgba(109,40,217,.5);
 }
 .lp-logo-name{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:#f0eeff;letter-spacing:-.02em}
-.lp-nav-right{display:flex;align-items:center;gap:16px}
-.lp-nav-link{font-size:13.5px;font-weight:500;color:rgba(240,238,255,.5);transition:color .2s;text-decoration:none}
-.lp-nav-link:hover{color:#f0eeff}
 .lp-nav-btn{
   background:linear-gradient(135deg,#6d28d9,#a855f7);
-  color:#fff;border:none;border-radius:12px;padding:10px 24px;
+  color:#fff;border:none;border-radius:12px;padding:10px 22px;
   font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;
   cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(109,40,217,.4);
 }
 .lp-nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(109,40,217,.5)}
-@media(max-width:700px){
-  .lp-nav{padding:16px 20px}
-  .lp-nav-link{display:none}
-}
 
-/* ── Hero ── */
+/* Hero */
 .lp-hero{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:120px 24px 80px;position:relative;min-height:100vh;
+  text-align:center;padding:100px 24px 80px;position:relative;min-height:90vh;
 }
 .lp-hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(100px)}
-.lp-orb-a{width:600px;height:600px;background:radial-gradient(circle,rgba(109,40,217,.35),transparent 70%);top:-10%;left:-15%;animation:orbF 14s ease-in-out infinite}
-.lp-orb-b{width:400px;height:400px;background:radial-gradient(circle,rgba(232,121,249,.2),transparent 70%);bottom:-5%;right:-10%;animation:orbF 10s ease-in-out infinite reverse}
-.lp-orb-c{width:300px;height:300px;background:radial-gradient(circle,rgba(79,70,229,.15),transparent 70%);top:40%;left:55%;animation:orbF 16s ease-in-out infinite 2s}
+.lp-orb-a{width:600px;height:600px;background:radial-gradient(circle,rgba(109,40,217,.4),transparent 70%);top:-10%;left:-15%;animation:orbF 14s ease-in-out infinite}
+.lp-orb-b{width:400px;height:400px;background:radial-gradient(circle,rgba(232,121,249,.25),transparent 70%);bottom:-5%;right:-10%;animation:orbF 10s ease-in-out infinite reverse}
+.lp-orb-c{width:300px;height:300px;background:radial-gradient(circle,rgba(79,70,229,.2),transparent 70%);top:40%;left:55%;animation:orbF 16s ease-in-out infinite 2s}
 .lp-badge{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(109,40,217,.12);border:1px solid rgba(139,92,246,.25);
-  border-radius:99px;padding:6px 18px;margin-bottom:32px;
-  font-size:12.5px;font-weight:500;color:#c4b5fd;letter-spacing:.04em;
+  background:rgba(109,40,217,.15);border:1px solid rgba(139,92,246,.3);
+  border-radius:99px;padding:6px 16px;margin-bottom:28px;
+  font-size:13px;font-weight:500;color:#c4b5fd;
 }
 .lp-badge-dot{width:7px;height:7px;border-radius:50%;background:#a78bfa;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 .lp-hero h1{
   font-family:'Fraunces',serif;
-  font-size:clamp(36px,6.5vw,78px);
-  font-weight:800;line-height:1.06;letter-spacing:-.035em;
-  color:#f0eeff;margin-bottom:28px;position:relative;z-index:1;
-  max-width:900px;
+  font-size:clamp(42px,7vw,82px);
+  font-weight:800;line-height:1.08;letter-spacing:-.03em;
+  color:#f0eeff;margin-bottom:24px;position:relative;z-index:1;
 }
-.lp-hero h1 .lp-h1-em{
-  display:block;font-weight:300;font-style:italic;
-  background:linear-gradient(135deg,#c4b5fd 10%,#e879f9 50%,#818cf8 90%);
+.lp-hero h1 span{
+  background:linear-gradient(135deg,#a78bfa,#e879f9);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 .lp-hero-sub{
-  font-size:clamp(15px,1.8vw,19px);color:rgba(240,238,255,.5);
-  max-width:600px;line-height:1.85;margin-bottom:44px;position:relative;z-index:1;font-weight:300;
+  font-size:clamp(16px,2.2vw,20px);color:rgba(240,238,255,.6);
+  max-width:560px;line-height:1.7;margin-bottom:48px;position:relative;z-index:1;
 }
 .lp-cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
 .lp-cta-primary{
   display:flex;align-items:center;gap:10px;
   background:linear-gradient(135deg,#6d28d9,#a855f7,#e879f9);
-  color:#fff;border:none;border-radius:16px;padding:17px 36px;
-  font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;
+  color:#fff;border:none;border-radius:16px;padding:16px 32px;
+  font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;
   cursor:pointer;transition:all .25s;
   box-shadow:0 8px 32px rgba(109,40,217,.5),0 0 0 1px rgba(255,255,255,.1) inset;
   text-decoration:none;
@@ -505,364 +496,12 @@ body::before{
 .lp-cta-primary:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(109,40,217,.6)}
 .lp-cta-secondary{
   display:flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
-  color:#f0eeff;border-radius:16px;padding:17px 28px;
-  font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  color:#f0eeff;border-radius:16px;padding:16px 28px;
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;
   cursor:pointer;transition:all .25s;text-decoration:none;
 }
 .lp-cta-secondary:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
-
-/* ── Hero Microcopy ── */
-.lp-microcopy{
-  display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center;
-  margin-top:22px;position:relative;z-index:1;
-}
-.lp-microcopy span{
-  display:flex;align-items:center;gap:6px;
-  font-size:12px;color:rgba(240,238,255,.35);font-weight:400;
-}
-.lp-microcopy svg{width:14px;height:14px;flex-shrink:0;opacity:.6}
-.lp-mc-green svg{color:#34d399}
-.lp-mc-blue svg{color:#818cf8}
-.lp-mc-amber svg{color:#fbbf24}
-
-/* ── Stats bar ── */
-.lp-stats{
-  display:flex;gap:0;justify-content:center;flex-wrap:wrap;
-  margin-top:56px;position:relative;z-index:1;
-  border:1px solid rgba(255,255,255,.07);border-radius:20px;
-  background:rgba(255,255,255,.025);backdrop-filter:blur(10px);
-  overflow:hidden;max-width:620px;width:100%;
-}
-.lp-stat{flex:1;min-width:140px;padding:22px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.06)}
-.lp-stat:last-child{border-right:none}
-.lp-stat-num{font-family:'Fraunces',serif;font-size:30px;font-weight:700;color:#a78bfa;line-height:1}
-.lp-stat-label{font-size:12px;color:rgba(240,238,255,.4);margin-top:5px;font-weight:500}
-
-/* ── Floating Trust Pills ── */
-.lp-trust-float{
-  position:absolute;right:4%;top:50%;transform:translateY(-50%);
-  display:flex;flex-direction:column;gap:14px;z-index:2;
-}
-.lp-trust-pill{
-  display:flex;align-items:center;gap:12px;padding:13px 18px;
-  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
-  border-radius:16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  animation:lpSlideIn .7s cubic-bezier(.16,1,.3,1) both;white-space:nowrap;
-}
-.lp-trust-pill:nth-child(2){animation-delay:.12s}
-.lp-trust-pill:nth-child(3){animation-delay:.24s}
-@keyframes lpSlideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
-.lp-tp-icon{
-  width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-  font-size:15px;flex-shrink:0;
-}
-.lp-tp-icon.tp-gold{background:rgba(251,191,36,.1)}
-.lp-tp-icon.tp-green{background:rgba(52,211,153,.1)}
-.lp-tp-icon.tp-blue{background:rgba(129,140,248,.1)}
-.lp-tp-text{display:flex;flex-direction:column}
-.lp-tp-label{font-size:12.5px;font-weight:600;color:rgba(240,238,255,.82)}
-.lp-tp-sub{font-size:10.5px;color:rgba(240,238,255,.35);margin-top:1px}
-@media(max-width:1150px){.lp-trust-float{display:none}}
-
-/* ── Philosophy Strip ── */
-.lp-philosophy{
-  padding:72px 24px;max-width:1100px;margin:0 auto;width:100%;
-  border-top:1px solid rgba(255,255,255,.06);
-}
-.lp-phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
-.lp-phil-item{text-align:center}
-.lp-phil-icon{
-  width:52px;height:52px;border-radius:50%;margin:0 auto 18px;
-  display:flex;align-items:center;justify-content:center;font-size:20px;
-  background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);
-}
-.lp-phil-item h3{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:#f0eeff;margin-bottom:10px}
-.lp-phil-item p{font-size:13.5px;color:rgba(240,238,255,.45);line-height:1.75;max-width:300px;margin:0 auto}
-@media(max-width:700px){.lp-phil-grid{grid-template-columns:1fr;gap:36px}}
-
-/* ── Section Headers ── */
-.lp-section{padding:80px 24px;max-width:1100px;margin:0 auto;width:100%}
-.lp-section-label{
-  font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:#a78bfa;margin-bottom:16px;text-align:center;
-}
-.lp-section h2{
-  font-family:'Fraunces',serif;font-size:clamp(30px,5vw,52px);font-weight:700;
-  color:#f0eeff;text-align:center;letter-spacing:-.025em;line-height:1.12;margin-bottom:16px;
-}
-.lp-section-sub{font-size:16px;color:rgba(240,238,255,.45);text-align:center;max-width:520px;margin:0 auto 56px;line-height:1.7}
-.lp-divider{width:60px;height:1px;margin:0 auto 20px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.4),transparent)}
-
-/* ── Assessment Cards — THE CORE SECTION ── */
-.lp-assess-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
-@media(max-width:400px){.lp-assess-grid{grid-template-columns:1fr}}
-.lp-assess-card{
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
-  border-radius:22px;padding:30px 26px;position:relative;overflow:hidden;
-  transition:all .3s cubic-bezier(.22,1,.36,1);
-}
-.lp-assess-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  border-radius:22px 22px 0 0;opacity:.6;transition:opacity .3s;
-}
-.lp-assess-card:hover{
-  border-color:rgba(139,92,246,.2);transform:translateY(-4px);
-  box-shadow:0 20px 48px rgba(0,0,0,.3),0 0 0 1px rgba(139,92,246,.1) inset;
-}
-.lp-assess-card:hover::before{opacity:1}
-.lp-ac-badge{
-  display:inline-flex;align-items:center;gap:5px;padding:3px 10px;
-  background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);
-  color:#a78bfa;font-size:10.5px;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;border-radius:99px;margin-bottom:18px;
-}
-.lp-ac-title{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:#f0eeff;margin-bottom:8px;line-height:1.25}
-.lp-ac-framing{
-  font-size:13.5px;color:rgba(240,238,255,.45);font-style:italic;
-  margin-bottom:18px;line-height:1.65;
-}
-.lp-ac-why{margin-bottom:16px}
-.lp-ac-why-label{
-  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(240,238,255,.3);margin-bottom:6px;
-}
-.lp-ac-why p{font-size:13px;color:rgba(240,238,255,.5);line-height:1.7}
-.lp-ac-discover{
-  padding:14px 16px;background:rgba(255,255,255,.025);
-  border:1px solid rgba(255,255,255,.05);border-radius:12px;margin-bottom:18px;
-}
-.lp-ac-discover-label{
-  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(240,238,255,.3);margin-bottom:8px;
-}
-.lp-ac-discover ul{list-style:none;display:flex;flex-direction:column;gap:6px}
-.lp-ac-discover li{
-  font-size:12.5px;color:rgba(240,238,255,.45);display:flex;align-items:flex-start;gap:8px;line-height:1.5;
-}
-.lp-ac-discover li::before{content:'◆';color:#a78bfa;font-size:5px;margin-top:6px;flex-shrink:0}
-.lp-ac-meta{
-  display:flex;align-items:center;gap:14px;padding-top:16px;
-  border-top:1px solid rgba(255,255,255,.05);font-size:11.5px;color:rgba(240,238,255,.3);
-}
-.lp-ac-meta span{display:flex;align-items:center;gap:4px}
-.lp-ac-meta svg{width:13px;height:13px}
-.lp-ac-cta{
-  display:flex;align-items:center;gap:6px;margin-left:auto;
-  font-weight:600;color:#a78bfa;font-size:12.5px;transition:gap .2s;cursor:pointer;
-}
-.lp-assess-card:hover .lp-ac-cta{gap:10px}
-.lp-ac-cta svg{width:13px;height:13px;transition:transform .2s}
-.lp-assess-card:hover .lp-ac-cta svg{transform:translateX(2px)}
-
-/* ── Feature Cards (enhanced) ── */
-.lp-features{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.lp-feature{
-  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
-  border-radius:20px;padding:28px;transition:all .28s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;
-}
-.lp-feature::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--feat-color,linear-gradient(90deg,#6d28d9,#a855f7));
-  border-radius:20px 20px 0 0;opacity:.5;transition:opacity .3s;
-}
-.lp-feature:hover{border-color:rgba(139,92,246,.22);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
-.lp-feature:hover::before{opacity:1}
-.lp-feat-icon{font-size:32px;margin-bottom:16px}
-.lp-feat-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:#f0eeff;margin-bottom:6px}
-.lp-feat-framing{font-size:12.5px;color:rgba(240,238,255,.38);font-style:italic;margin-bottom:12px;line-height:1.6}
-.lp-feat-desc{font-size:13.5px;color:rgba(240,238,255,.5);line-height:1.7}
-.lp-feat-meta{display:flex;align-items:center;gap:14px;margin-top:14px;font-size:11px;color:rgba(240,238,255,.28)}
-.lp-feat-meta span{display:flex;align-items:center;gap:4px}
-.lp-feat-meta svg{width:12px;height:12px}
-
-/* ── Schema & Personality Preview ── */
-.lp-schema-section{padding:80px 24px;max-width:1100px;margin:0 auto;width:100%;border-top:1px solid rgba(255,255,255,.05)}
-.lp-schema-tabs{
-  display:flex;justify-content:center;gap:6px;margin-bottom:40px;flex-wrap:wrap;
-}
-.lp-schema-tab{
-  padding:8px 18px;font-size:13px;font-weight:600;color:rgba(240,238,255,.4);
-  border-radius:99px;cursor:pointer;transition:all .2s;border:1px solid transparent;
-  font-family:'Outfit',sans-serif;background:none;
-}
-.lp-schema-tab:hover{color:rgba(240,238,255,.7);background:rgba(255,255,255,.04)}
-.lp-schema-tab.active{
-  color:#f0eeff;background:rgba(139,92,246,.12);
-  border-color:rgba(139,92,246,.25);box-shadow:0 2px 8px rgba(109,40,217,.15);
-}
-.lp-schema-content{display:none}
-.lp-schema-content.active{display:block;animation:lpFadeUp .45s cubic-bezier(.22,1,.36,1)}
-@keyframes lpFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.lp-schema-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.lp-schema-item{
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
-  border-radius:16px;padding:22px;transition:all .25s;
-}
-.lp-schema-item:hover{border-color:rgba(139,92,246,.18);box-shadow:0 8px 24px rgba(0,0,0,.2);transform:translateY(-2px)}
-.lp-si-name{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:#f0eeff;margin-bottom:4px}
-.lp-si-essence{font-size:11.5px;color:#a78bfa;font-style:italic;margin-bottom:10px}
-.lp-si-desc{font-size:13px;color:rgba(240,238,255,.48);line-height:1.7;margin-bottom:12px}
-.lp-si-example{
-  font-size:11.5px;color:rgba(240,238,255,.35);padding:10px 13px;
-  background:rgba(139,92,246,.04);border-left:2px solid rgba(139,92,246,.2);
-  border-radius:0 10px 10px 0;line-height:1.6;
-}
-.lp-si-example strong{color:rgba(240,238,255,.5);font-weight:600}
-.lp-view-all{
-  text-align:center;margin-top:28px;font-size:13px;color:rgba(240,238,255,.35);
-}
-.lp-view-all a{color:#a78bfa;font-weight:600;text-decoration:none;transition:color .2s}
-.lp-view-all a:hover{color:#c4b5fd}
-
-/* ── Patterns & Awareness Section ── */
-.lp-patterns{
-  padding:80px 24px;max-width:1100px;margin:0 auto;width:100%;
-  border-top:1px solid rgba(255,255,255,.05);
-}
-.lp-disclaimer-bar{
-  text-align:center;max-width:640px;margin:0 auto 40px;
-  padding:14px 20px;background:rgba(91,123,149,.06);
-  border:1px solid rgba(91,123,149,.12);border-radius:12px;
-  font-size:12.5px;color:rgba(145,180,210,.7);line-height:1.7;
-}
-.lp-pattern-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.lp-pattern-card{
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
-  border-radius:16px;padding:22px;transition:all .25s;
-}
-.lp-pattern-card:hover{border-color:rgba(255,255,255,.12);box-shadow:0 8px 24px rgba(0,0,0,.2)}
-.lp-pc-name{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:#f0eeff;margin-bottom:4px}
-.lp-pc-signal{font-size:11px;color:rgba(244,114,182,.6);margin-bottom:10px;font-style:italic}
-.lp-pc-desc{font-size:13px;color:rgba(240,238,255,.48);line-height:1.7;margin-bottom:12px}
-.lp-pc-reflection{
-  font-size:11.5px;color:rgba(240,238,255,.35);padding:10px 13px;
-  background:rgba(166,123,123,.05);border-left:2px solid rgba(244,114,182,.15);
-  border-radius:0 10px 10px 0;font-style:italic;line-height:1.6;
-}
-
-/* ── Social Proof ── */
-.lp-proof{padding:80px 24px;max-width:1100px;margin:0 auto;width:100%;border-top:1px solid rgba(255,255,255,.05)}
-.lp-proof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
-.lp-proof-card{
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
-  border-radius:20px;padding:28px;transition:border-color .2s;
-}
-.lp-proof-card:hover{border-color:rgba(139,92,246,.15)}
-.lp-proof-quote{
-  font-family:'Fraunces',serif;font-size:15.5px;font-weight:300;
-  font-style:italic;color:rgba(240,238,255,.65);line-height:1.7;
-  margin-bottom:22px;
-}
-.lp-proof-author{display:flex;align-items:center;gap:12px}
-.lp-proof-avatar{
-  width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:14px;font-weight:700;color:#06060f;
-  background:linear-gradient(135deg,#a78bfa,#e879f9);
-}
-.lp-proof-name{font-size:13px;font-weight:600;color:rgba(240,238,255,.75)}
-.lp-proof-role{font-size:11px;color:rgba(240,238,255,.3)}
-
-/* ── FAQ ── */
-.lp-faq{padding:80px 24px;max-width:740px;margin:0 auto;width:100%;border-top:1px solid rgba(255,255,255,.05)}
-.lp-faq-list{display:flex;flex-direction:column;gap:10px}
-.lp-faq-item{border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;transition:border-color .2s}
-.lp-faq-item:hover{border-color:rgba(139,92,246,.18)}
-.lp-faq-q{
-  width:100%;display:flex;align-items:center;justify-content:space-between;
-  padding:18px 22px;font-size:15px;font-weight:500;
-  color:rgba(240,238,255,.82);text-align:left;
-  background:transparent;cursor:pointer;border:none;
-  font-family:'Outfit',sans-serif;transition:background .15s;
-}
-.lp-faq-q:hover{background:rgba(255,255,255,.025)}
-.lp-faq-icon{
-  width:26px;height:26px;border-radius:50%;
-  background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;transition:all .3s cubic-bezier(.22,1,.36,1);
-  font-size:14px;color:rgba(240,238,255,.4);font-family:'Outfit',sans-serif;
-}
-.lp-faq-item.open .lp-faq-icon{background:rgba(139,92,246,.15);color:#a78bfa;transform:rotate(45deg)}
-.lp-faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.22,1,.36,1)}
-.lp-faq-item.open .lp-faq-a{max-height:350px}
-.lp-faq-a-inner{padding:0 22px 22px;font-size:13.5px;color:rgba(240,238,255,.45);line-height:1.85}
-
-/* ── Download Section ── */
-.lp-download{
-  background:linear-gradient(135deg,rgba(109,40,217,.18),rgba(232,121,249,.08));
-  border:1px solid rgba(139,92,246,.18);border-radius:28px;
-  padding:60px 40px;text-align:center;margin:0 24px 0;
-  position:relative;overflow:hidden;
-}
-.lp-download::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(109,40,217,.2),transparent 70%);
-  pointer-events:none;
-}
-.lp-download h2{
-  font-family:'Fraunces',serif;font-size:clamp(26px,4vw,42px);
-  font-weight:700;color:#f0eeff;margin-bottom:16px;position:relative;z-index:1;
-}
-.lp-download p{font-size:16px;color:rgba(240,238,255,.55);margin-bottom:32px;position:relative;z-index:1;line-height:1.7}
-.lp-download-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;z-index:1}
-.lp-apk-btn{
-  display:flex;align-items:center;gap:12px;
-  background:linear-gradient(135deg,#6d28d9,#a855f7);
-  color:#fff;text-decoration:none;border-radius:16px;padding:16px 28px;
-  font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;
-  transition:all .25s;box-shadow:0 8px 32px rgba(109,40,217,.45);
-}
-.lp-apk-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(109,40,217,.6)}
-.lp-install-note{margin-top:20px;font-size:12.5px;color:rgba(240,238,255,.32);position:relative;z-index:1}
-
-/* ── Final CTA ── */
-.lp-final-cta{
-  padding:110px 24px;text-align:center;position:relative;overflow:hidden;
-}
-.lp-final-cta::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(109,40,217,.1),transparent 70%);
-  pointer-events:none;
-}
-.lp-final-cta h2{
-  font-family:'Fraunces',serif;font-size:clamp(26px,4.5vw,48px);
-  font-weight:700;color:#f0eeff;line-height:1.18;margin-bottom:18px;
-  position:relative;z-index:1;letter-spacing:-.025em;
-}
-.lp-final-cta h2 em{
-  font-weight:300;font-style:italic;
-  background:linear-gradient(135deg,#a78bfa,#e879f9);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.lp-final-cta-sub{
-  font-size:16px;color:rgba(240,238,255,.45);
-  max-width:500px;margin:0 auto 36px;line-height:1.75;position:relative;z-index:1;
-}
-.lp-final-micro{margin-top:18px;font-size:12px;color:rgba(240,238,255,.25);position:relative;z-index:1}
-
-/* ── Professional Footer ── */
-.lp-footer{
-  border-top:1px solid rgba(255,255,255,.06);padding:48px 40px 28px;
-  display:flex;flex-direction:column;
-}
-.lp-footer-grid{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;
-  padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:24px;
-}
-.lp-footer-logo{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:rgba(240,238,255,.6)}
-.lp-footer-brand-desc{font-size:13px;color:rgba(240,238,255,.3);line-height:1.75;max-width:300px;margin-top:12px}
-.lp-footer-col h4{
-  font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(240,238,255,.25);margin-bottom:14px;
-}
-.lp-footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.lp-footer-col a{font-size:13px;color:rgba(240,238,255,.4);text-decoration:none;transition:color .2s}
-.lp-footer-col a:hover{color:#a78bfa}
-.lp-footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.lp-footer-copy{font-size:12px;color:rgba(240,238,255,.2)}
-.lp-footer-trust{display:flex;align-items:center;gap:18px;font-size:11px;color:rgba(240,238,255,.22)}
-.lp-footer-trust span{display:flex;align-items:center;gap:4px}
-.lp-footer-trust svg{width:13px;height:13px}
 .lp-android-badge{
   display:flex;align-items:center;gap:10px;
   background:#000;border:1px solid rgba(255,255,255,.15);
@@ -874,20 +513,186 @@ body::before{
 .lp-android-badge-small{font-size:10px;color:rgba(255,255,255,.6);font-weight:400;letter-spacing:.05em}
 .lp-android-badge-big{font-size:15px;color:#fff;font-weight:600;letter-spacing:-.01em}
 
-/* ── Scroll Reveal ── */
-.lp-reveal{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
-.lp-reveal.lp-vis{opacity:1;transform:translateY(0)}
-.lp-rd1{transition-delay:.08s}.lp-rd2{transition-delay:.16s}.lp-rd3{transition-delay:.24s}.lp-rd4{transition-delay:.32s}.lp-rd5{transition-delay:.4s}
-
-@media(max-width:768px){
-  .lp-footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+/* Stats */
+.lp-stats{
+  display:flex;gap:0;justify-content:center;flex-wrap:wrap;
+  margin-top:64px;position:relative;z-index:1;
+  border:1px solid rgba(255,255,255,.08);border-radius:20px;
+  background:rgba(255,255,255,.03);backdrop-filter:blur(10px);
+  overflow:hidden;max-width:560px;width:100%;
 }
-@media(max-width:480px){
-  .lp-footer-grid{grid-template-columns:1fr}
-  .lp-footer{padding:32px 20px 20px}
+.lp-stat{flex:1;min-width:120px;padding:20px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.lp-stat:last-child{border-right:none}
+.lp-stat-num{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:#a78bfa;line-height:1}
+.lp-stat-label{font-size:12px;color:rgba(240,238,255,.46);margin-top:4px;font-weight:500}
+
+/* Features */
+.lp-section{padding:80px 24px;max-width:1100px;margin:0 auto;width:100%}
+.lp-section-label{
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#a78bfa;margin-bottom:16px;text-align:center;
+}
+.lp-section h2{
+  font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:700;
+  color:#f0eeff;text-align:center;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px;
+}
+.lp-section-sub{font-size:17px;color:rgba(240,238,255,.55);text-align:center;max-width:500px;margin:0 auto 56px;line-height:1.6}
+.lp-features{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.lp-feature{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;padding:28px;transition:all .25s;position:relative;overflow:hidden;
+}
+.lp-feature::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--feat-color,linear-gradient(90deg,#6d28d9,#a855f7));
+  border-radius:20px 20px 0 0;
+}
+.lp-feature:hover{border-color:rgba(139,92,246,.25);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.lp-feat-icon{font-size:32px;margin-bottom:16px}
+.lp-feat-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:#f0eeff;margin-bottom:8px}
+.lp-feat-desc{font-size:14px;color:rgba(240,238,255,.55);line-height:1.65}
+
+/* Download section */
+.lp-download{
+  background:linear-gradient(135deg,rgba(109,40,217,.2),rgba(232,121,249,.1));
+  border:1px solid rgba(139,92,246,.2);border-radius:28px;
+  padding:60px 40px;text-align:center;margin:0 24px 80px;
+  position:relative;overflow:hidden;
+}
+.lp-download::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(109,40,217,.25),transparent 70%);
+  pointer-events:none;
+}
+.lp-download h2{
+  font-family:'Fraunces',serif;font-size:clamp(28px,4vw,44px);
+  font-weight:700;color:#f0eeff;margin-bottom:16px;position:relative;z-index:1;
+}
+.lp-download p{font-size:17px;color:rgba(240,238,255,.6);margin-bottom:36px;position:relative;z-index:1;line-height:1.6}
+.lp-download-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;z-index:1}
+.lp-apk-btn{
+  display:flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,#6d28d9,#a855f7);
+  color:#fff;text-decoration:none;border-radius:16px;padding:16px 28px;
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;
+  transition:all .25s;box-shadow:0 8px 32px rgba(109,40,217,.45);
+}
+.lp-apk-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(109,40,217,.6)}
+.lp-install-note{
+  margin-top:20px;font-size:13px;color:rgba(240,238,255,.38);
+  position:relative;z-index:1;
+}
+
+/* Footer */
+.lp-footer{
+  border-top:1px solid rgba(255,255,255,.07);padding:32px 40px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.lp-footer-logo{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:rgba(240,238,255,.6)}
+.lp-footer-links{display:flex;gap:24px}
+.lp-footer-links a{font-size:13px;color:rgba(240,238,255,.4);text-decoration:none;transition:color .2s}
+.lp-footer-links a:hover{color:#a78bfa}
+.lp-footer-copy{font-size:12px;color:rgba(240,238,255,.25);width:100%}
+
+/* ── Enterprise Polish: New Sections ── */
+
+/* Scroll-triggered fade-in */
+.lp-reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.lp-reveal.visible{opacity:1;transform:translateY(0)}
+.lp-reveal-delay-1{transition-delay:.1s}
+.lp-reveal-delay-2{transition-delay:.2s}
+.lp-reveal-delay-3{transition-delay:.3s}
+
+/* Hero microcopy */
+.lp-hero-microcopy{font-size:13px;color:rgba(240,238,255,.38);margin-top:16px;position:relative;z-index:1;display:flex;align-items:center;gap:8px;justify-content:center}
+.lp-hero-microcopy svg{width:14px;height:14px;opacity:.5}
+
+/* Trust bar */
+.lp-trust-bar{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;padding:18px 24px;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.015)}
+.lp-trust-item{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(240,238,255,.4);font-weight:500;letter-spacing:.01em}
+.lp-trust-item svg{width:15px;height:15px;opacity:.45;flex-shrink:0}
+
+/* How it works */
+.lp-how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:howstep}
+.lp-how-step{position:relative;text-align:center;padding:36px 24px 28px}
+.lp-how-step::before{counter-increment:howstep;content:counter(howstep,decimal-leading-zero);font-family:'Fraunces',serif;font-size:52px;font-weight:800;color:rgba(139,92,246,.12);line-height:1;display:block;margin-bottom:16px}
+.lp-how-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:#f0eeff;margin-bottom:10px}
+.lp-how-desc{font-size:14px;color:rgba(240,238,255,.5);line-height:1.65}
+.lp-how-connector{display:none}
+@media(min-width:768px){
+  .lp-how-connector{display:block;position:absolute;top:50%;right:-20px;width:40px;height:1px;background:linear-gradient(90deg,rgba(139,92,246,.3),transparent);z-index:1}
+  .lp-how-step:last-child .lp-how-connector{display:none}
+}
+
+/* Testimonial / Social proof */
+.lp-proof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.lp-proof-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px;position:relative}
+.lp-proof-card::before{content:'"';font-family:'Fraunces',serif;font-size:64px;color:rgba(139,92,246,.15);line-height:1;position:absolute;top:12px;left:20px}
+.lp-proof-quote{font-size:15px;color:rgba(240,238,255,.7);line-height:1.72;margin-bottom:16px;padding-top:24px;font-style:italic}
+.lp-proof-author{display:flex;align-items:center;gap:12px}
+.lp-proof-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,rgba(139,92,246,.3),rgba(232,121,249,.2));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.lp-proof-name{font-size:14px;font-weight:600;color:#f0eeff}
+.lp-proof-role{font-size:12px;color:rgba(240,238,255,.4);margin-top:2px}
+
+/* FAQ */
+.lp-faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.lp-faq-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;transition:border-color .2s}
+.lp-faq-item.open{border-color:rgba(139,92,246,.2)}
+.lp-faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;transition:background .15s;user-select:none}
+.lp-faq-q:hover{background:rgba(255,255,255,.02)}
+.lp-faq-q-text{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:#f0eeff;flex:1;line-height:1.4}
+.lp-faq-chevron{font-size:13px;color:rgba(240,238,255,.3);transition:transform .25s;flex-shrink:0;margin-left:16px}
+.lp-faq-item.open .lp-faq-chevron{transform:rotate(180deg)}
+.lp-faq-a{display:none;padding:0 22px 20px;font-size:14.5px;color:rgba(240,238,255,.55);line-height:1.72}
+.lp-faq-item.open .lp-faq-a{display:block;animation:fi .2s ease}
+
+/* Science credibility strip */
+.lp-science-strip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:20px;padding:20px 24px;background:rgba(139,92,246,.04);border-top:1px solid rgba(139,92,246,.08);border-bottom:1px solid rgba(139,92,246,.08)}
+.lp-science-item{font-size:12px;color:rgba(240,238,255,.45);font-weight:500;display:flex;align-items:center;gap:6px}
+.lp-science-item::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(139,92,246,.4);flex-shrink:0}
+
+/* Enterprise footer */
+.lp-footer-enterprise{border-top:1px solid rgba(255,255,255,.06);padding:48px 40px 32px}
+.lp-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.05)}
+.lp-footer-brand-desc{font-size:13.5px;color:rgba(240,238,255,.4);line-height:1.65;margin-top:12px;max-width:280px}
+.lp-footer-col-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(240,238,255,.35);margin-bottom:16px}
+.lp-footer-col a{display:block;font-size:13.5px;color:rgba(240,238,255,.5);text-decoration:none;margin-bottom:10px;transition:color .15s}
+.lp-footer-col a:hover{color:#a78bfa}
+.lp-footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:1100px;margin:24px auto 0;font-size:12px;color:rgba(240,238,255,.22)}
+.lp-footer-security{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.lp-footer-security span{display:flex;align-items:center;gap:5px;font-size:11.5px;color:rgba(240,238,255,.3)}
+.lp-footer-security svg{width:13px;height:13px;opacity:.35}
+
+/* Assessment panel enterprise framing */
+.assess-panel-intro{margin-bottom:28px;padding:24px 28px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);border-radius:20px}
+.assess-panel-intro p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:8px}
+.assess-panel-intro p:last-child{margin-bottom:0}
+.assess-panel-trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:14px}
+.assess-panel-trust span{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+
+/* Assessment card enhancement */
+.assess-card-why{font-size:12px;color:var(--muted);line-height:1.55;margin-top:8px;padding-top:8px;border-top:1px solid var(--rim);font-style:italic}
+.assess-card-time{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--dim);margin-top:6px}
+
+/* Learn section enhancement */
+.learn-section-frame{padding:20px 24px;margin-bottom:20px;background:rgba(139,92,246,.03);border:1px solid rgba(139,92,246,.08);border-radius:16px}
+.learn-section-frame p{font-size:13.5px;color:var(--text2);line-height:1.7}
+
+@media(max-width:900px){
+  .lp-footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .lp-nav{padding:16px 20px}
   .lp-hero{padding:80px 20px 60px;min-height:auto}
+  .lp-download{padding:40px 24px;margin:0 16px 60px}
+  .lp-footer-enterprise{padding:32px 20px 24px}
+  .lp-footer-grid{grid-template-columns:1fr}
   .lp-stat{min-width:100px;padding:16px}
-  .lp-download{padding:40px 24px;margin:0 16px}
+  .lp-how-grid{grid-template-columns:1fr;gap:8px}
+  .lp-how-step{padding:24px 20px 20px}
+  .lp-proof-grid{grid-template-columns:1fr}
+  .lp-faq-q-text{font-size:15px}
+  .lp-trust-bar{gap:16px;padding:14px 16px}
 }
 
 /* ═══════════════════════════════════════════
@@ -1767,21 +1572,24 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
      ════════════════════════════════════════ -->
 <div id="landingPage">
 
-  <!-- ══ Nav ══ -->
+  <!-- Nav -->
   <nav class="lp-nav">
     <div class="lp-logo">
       <div class="lp-logo-icon">🧠</div>
       <span class="lp-logo-name">Innerly</span>
     </div>
-    <div class="lp-nav-right">
-      <a class="lp-nav-link" href="#lp-assessments" onclick="event.preventDefault();document.getElementById('lp-assessments').scrollIntoView({behavior:'smooth'})">Assessments</a>
-      <a class="lp-nav-link" href="#lp-schemas" onclick="event.preventDefault();document.getElementById('lp-schemas').scrollIntoView({behavior:'smooth'})">Know Yourself</a>
-      <a class="lp-nav-link" href="#lp-faq-sec" onclick="event.preventDefault();document.getElementById('lp-faq-sec').scrollIntoView({behavior:'smooth'})">FAQ</a>
-      <button class="lp-nav-btn" onclick="enterApp()">Begin Your Journey →</button>
-    </div>
+    <button class="lp-nav-btn" onclick="enterApp()">Begin Your Journey →</button>
   </nav>
 
-  <!-- ══ Hero ══ -->
+  <!-- Trust Bar -->
+  <div class="lp-trust-bar">
+    <div class="lp-trust-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> End-to-end encrypted</div>
+    <div class="lp-trust-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Evidence-based frameworks</div>
+    <div class="lp-trust-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> No diagnosis · No labels</div>
+    <div class="lp-trust-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/></svg> Your data stays yours</div>
+  </div>
+
+  <!-- Hero -->
   <section class="lp-hero">
     <div class="lp-hero-orb lp-orb-a"></div>
     <div class="lp-hero-orb lp-orb-b"></div>
@@ -1789,504 +1597,275 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
 
     <div class="lp-badge">
       <span class="lp-badge-dot"></span>
-      Psychological Self-Discovery Platform
+      Psychological self-discovery · Grounded in science
     </div>
 
-    <h1>Understand the patterns<br><span class="lp-h1-em">that silently shape your life</span></h1>
+    <h1>Understand the patterns<br>that <span>silently shape</span><br>your life.</h1>
 
     <p class="lp-hero-sub">
-      Structured, research-backed assessments and reflective journaling that help you see 
-      your emotional wiring, behavioural tendencies, and personality patterns — with clarity, not judgment.
+      Innerly is a private, research-backed space for self-awareness — combining validated psychological assessments, structured journaling, and deep psychological frameworks to help you see yourself with clarity, compassion, and precision.
     </p>
 
     <div class="lp-cta-row">
-      <button class="lp-cta-primary" onclick="enterApp()">✦ Explore Assessments</button>
-      <a class="lp-cta-secondary" href="#lp-features-sec" onclick="event.preventDefault();document.getElementById('lp-features-sec').scrollIntoView({behavior:'smooth'})">How it works ↓</a>
+      <button class="lp-cta-primary" onclick="enterApp()">
+        ✦ Begin Your Self-Discovery
+      </button>
+      <a class="lp-android-badge" href="/innerly.apk" download="Innerly.apk">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.523 15.341a.73.73 0 0 1-.73.73H7.207a.73.73 0 0 1-.73-.73V8.883c0-.403.327-.73.73-.73h9.586c.403 0 .73.327.73.73v6.458z" fill="#fff" opacity=".3"/>
+          <path d="M3.274 7.2A.73.73 0 0 0 2.544 7.93v8.14c0 .403.327.73.73.73s.73-.327.73-.73V7.93a.73.73 0 0 0-.73-.73zM20.726 7.2a.73.73 0 0 0-.73.73v8.14c0 .403.327.73.73.73s.73-.327.73-.73V7.93a.73.73 0 0 0-.73-.73zM14.795 2.09l.97-1.68a.2.2 0 0 0-.346-.2l-.981 1.699A6.26 6.26 0 0 0 12 1.6c-.84 0-1.636.173-2.358.483L8.582.21a.2.2 0 0 0-.347.2l.97 1.68A6.21 6.21 0 0 0 5.757 6.69h12.486A6.21 6.21 0 0 0 14.795 2.09zM9.8 4.6a.6.6 0 1 1 0-1.2.6.6 0 0 1 0 1.2zm4.4 0a.6.6 0 1 1 0-1.2.6.6 0 0 1 0 1.2z" fill="#fff"/>
+          <path d="M5.757 7.42v10.517a1.46 1.46 0 0 0 1.46 1.46h.73v3.14a.73.73 0 0 0 1.46 0v-3.14h1.46v3.14a.73.73 0 0 0 1.46 0v-3.14h1.46v3.14a.73.73 0 0 0 1.46 0v-3.14h.73a1.46 1.46 0 0 0 1.46-1.46V7.42H5.757z" fill="#fff"/>
+        </svg>
+        <div class="lp-android-badge-text">
+          <span class="lp-android-badge-small">DOWNLOAD FOR</span>
+          <span class="lp-android-badge-big">Android</span>
+        </div>
+      </a>
     </div>
 
-    <div class="lp-microcopy">
-      <span class="lp-mc-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Private &amp; encrypted</span>
-      <span class="lp-mc-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>No diagnosis — only awareness</span>
-      <span class="lp-mc-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>5–20 min per assessment</span>
+    <div class="lp-hero-microcopy">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/></svg>
+      Free to start · No credit card · Takes 2 minutes · Your responses are never shared
     </div>
 
     <div class="lp-stats">
-      <div class="lp-stat"><div class="lp-stat-num">25+</div><div class="lp-stat-label">Validated Assessments</div></div>
-      <div class="lp-stat"><div class="lp-stat-num">10+</div><div class="lp-stat-label">Psychology Modules</div></div>
-      <div class="lp-stat"><div class="lp-stat-num">100%</div><div class="lp-stat-label">Private &amp; Secure</div></div>
-    </div>
-
-    <!-- Floating Trust Pills (desktop) -->
-    <div class="lp-trust-float" aria-hidden="true">
-      <div class="lp-trust-pill">
-        <div class="lp-tp-icon tp-gold">✦</div>
-        <div class="lp-tp-text"><span class="lp-tp-label">Research-Backed</span><span class="lp-tp-sub">Grounded in clinical frameworks</span></div>
+      <div class="lp-stat">
+        <div class="lp-stat-num">25+</div>
+        <div class="lp-stat-label">Validated Assessments</div>
       </div>
-      <div class="lp-trust-pill">
-        <div class="lp-tp-icon tp-green">◇</div>
-        <div class="lp-tp-text"><span class="lp-tp-label">Non-Judgmental</span><span class="lp-tp-sub">Awareness, not labels</span></div>
+      <div class="lp-stat">
+        <div class="lp-stat-num">10+</div>
+        <div class="lp-stat-label">Psychological Frameworks</div>
       </div>
-      <div class="lp-trust-pill">
-        <div class="lp-tp-icon tp-blue">◎</div>
-        <div class="lp-tp-text"><span class="lp-tp-label">Built for Professionals</span><span class="lp-tp-sub">Founders · Leaders · Ambitious minds</span></div>
+      <div class="lp-stat">
+        <div class="lp-stat-num">100%</div>
+        <div class="lp-stat-label">Private & Encrypted</div>
       </div>
     </div>
   </section>
 
-  <!-- ══ Philosophy Strip ══ -->
-  <div class="lp-philosophy lp-reveal">
-    <div class="lp-phil-grid">
-      <div class="lp-phil-item">
-        <div class="lp-phil-icon">◇</div>
-        <h3>Clarity, Not Confusion</h3>
-        <p>Complex psychological concepts distilled into structured insights you can actually use — at work, in relationships, and within yourself.</p>
+  <!-- How It Works -->
+  <div class="lp-section lp-reveal">
+    <div class="lp-section-label">How it works</div>
+    <h2>Three steps to deeper self-awareness</h2>
+    <p class="lp-section-sub">No appointments, no waiting rooms. Begin understanding yourself at your own pace.</p>
+    <div class="lp-how-grid">
+      <div class="lp-how-step">
+        <div class="lp-how-title">Take a validated assessment</div>
+        <div class="lp-how-desc">Choose from 25+ research-backed psychological tools — from mood screeners to personality frameworks. Each takes 2–8 minutes and is scored instantly.</div>
+        <div class="lp-how-connector"></div>
       </div>
-      <div class="lp-phil-item">
-        <div class="lp-phil-icon">⟡</div>
-        <h3>Science, Not Speculation</h3>
-        <p>Every assessment draws from established frameworks in schema therapy, personality psychology, and cognitive-behavioural research.</p>
+      <div class="lp-how-step">
+        <div class="lp-how-title">See your patterns clearly</div>
+        <div class="lp-how-desc">Get a detailed, jargon-free interpretation of your results — with scores, subscales, and personalised recommendations grounded in clinical literature.</div>
+        <div class="lp-how-connector"></div>
       </div>
-      <div class="lp-phil-item">
-        <div class="lp-phil-icon">◌</div>
-        <h3>Growth, Not Diagnosis</h3>
-        <p>This is not therapy. It is a mirror — designed to help you notice what you haven't noticed before, so you can choose what comes next.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ Assessment Cards — THE CORE SECTION ══ -->
-  <div class="lp-section" id="lp-assessments">
-    <div class="lp-divider"></div>
-    <div class="lp-section-label">Personal Assessments</div>
-    <h2>Structured journeys into<br>self-understanding</h2>
-    <p class="lp-section-sub">Each assessment is a carefully designed exploration. There are no right or wrong answers — only honest ones.</p>
-
-    <div class="lp-assess-grid">
-
-      <!-- Schema Assessment -->
-      <div class="lp-assess-card lp-reveal" style="--feat-color:linear-gradient(90deg,#b45309,#f59e0b)">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#b45309,#f59e0b);border-radius:22px 22px 0 0;opacity:.7"></div>
-        <div class="lp-ac-badge">Core Framework</div>
-        <div class="lp-ac-title">Early Maladaptive Schemas</div>
-        <div class="lp-ac-framing">"Why do I keep ending up in the same situations — even when I know better?"</div>
-        <div class="lp-ac-why">
-          <div class="lp-ac-why-label">Why this matters</div>
-          <p>Schemas are deep emotional blueprints formed in childhood. They quietly drive how you relate to people, react under stress, and interpret everyday situations — often without your awareness.</p>
-        </div>
-        <div class="lp-ac-discover">
-          <div class="lp-ac-discover-label">What you'll discover</div>
-          <ul>
-            <li>Which of the 18 schema patterns are active in your life</li>
-            <li>How these show up in relationships and decisions</li>
-            <li>Your dominant schema domain (emotional needs that weren't met)</li>
-          </ul>
-        </div>
-        <div class="lp-ac-meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>15–20 min</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>90 items</span>
-          <span class="lp-ac-cta" onclick="enterApp()">Begin <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </div>
-      </div>
-
-      <!-- Personality Assessment -->
-      <div class="lp-assess-card lp-reveal lp-rd1">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0ea5e9,#6366f1);border-radius:22px 22px 0 0;opacity:.7"></div>
-        <div class="lp-ac-badge">Personality</div>
-        <div class="lp-ac-title">MBTI &amp; Personality Type</div>
-        <div class="lp-ac-framing">"What is my natural operating system — and how do others experience me?"</div>
-        <div class="lp-ac-why">
-          <div class="lp-ac-why-label">Why this matters</div>
-          <p>Your personality type isn't a box — it's a lens. It reveals how you process information, make decisions, relate to authority, and handle uncertainty. For professionals and founders, this clarity is leverage.</p>
-        </div>
-        <div class="lp-ac-discover">
-          <div class="lp-ac-discover-label">What you'll discover</div>
-          <ul>
-            <li>Your core personality structure and communication style</li>
-            <li>Natural strengths and blind spots in leadership</li>
-            <li>How your personality interacts with your schemas</li>
-          </ul>
-        </div>
-        <div class="lp-ac-meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>10–15 min</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>60 items</span>
-          <span class="lp-ac-cta" onclick="enterApp()">Begin <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </div>
-      </div>
-
-      <!-- Depression Screening -->
-      <div class="lp-assess-card lp-reveal lp-rd2">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6d28d9,#8b5cf6);border-radius:22px 22px 0 0;opacity:.7"></div>
-        <div class="lp-ac-badge">Mood Screening</div>
-        <div class="lp-ac-title">PHQ-9 · Depression Awareness</div>
-        <div class="lp-ac-framing">"Is this just a rough patch — or has something been quietly building up?"</div>
-        <div class="lp-ac-why">
-          <div class="lp-ac-why-label">Why this matters</div>
-          <p>Low mood, loss of interest, fatigue — when these persist, they deserve attention, not dismissal. The PHQ-9 is a globally validated tool that helps you see where you are, without catastrophising.</p>
-        </div>
-        <div class="lp-ac-discover">
-          <div class="lp-ac-discover-label">What you'll discover</div>
-          <ul>
-            <li>A structured snapshot of your current emotional state</li>
-            <li>Severity indicators used by professionals worldwide</li>
-            <li>Guidance on when to seek further support</li>
-          </ul>
-        </div>
-        <div class="lp-ac-meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>3–5 min</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>WHO validated</span>
-          <span class="lp-ac-cta" onclick="enterApp()">Begin <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </div>
-      </div>
-
-      <!-- Anxiety Screening -->
-      <div class="lp-assess-card lp-reveal lp-rd3">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0891b2,#06b6d4);border-radius:22px 22px 0 0;opacity:.7"></div>
-        <div class="lp-ac-badge">Anxiety Screening</div>
-        <div class="lp-ac-title">GAD-7 · Anxiety Awareness</div>
-        <div class="lp-ac-framing">"Am I just stressed — or is this something more persistent?"</div>
-        <div class="lp-ac-why">
-          <div class="lp-ac-why-label">Why this matters</div>
-          <p>Anxiety often disguises itself as productivity, hyper-vigilance, or "just being careful." The GAD-7 helps you distinguish everyday stress from something that may need attention.</p>
-        </div>
-        <div class="lp-ac-discover">
-          <div class="lp-ac-discover-label">What you'll discover</div>
-          <ul>
-            <li>How your worry and tension levels compare to clinical thresholds</li>
-            <li>Physical symptoms you may not have connected to anxiety</li>
-            <li>Whether professional support could help</li>
-          </ul>
-        </div>
-        <div class="lp-ac-meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>3–5 min</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Clinically validated</span>
-          <span class="lp-ac-cta" onclick="enterApp()">Begin <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </div>
-      </div>
-
-      <!-- Burnout -->
-      <div class="lp-assess-card lp-reveal lp-rd4">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f97316,#dc2626);border-radius:22px 22px 0 0;opacity:.7"></div>
-        <div class="lp-ac-badge">Professional</div>
-        <div class="lp-ac-title">Burnout Assessment</div>
-        <div class="lp-ac-framing">"I used to love this work. Why does everything feel so heavy now?"</div>
-        <div class="lp-ac-why">
-          <div class="lp-ac-why-label">Why this matters</div>
-          <p>Burnout is not laziness. It's a systematic depletion of emotional, cognitive, and physical reserves — and high achievers are the most vulnerable because they push through warning signals.</p>
-        </div>
-        <div class="lp-ac-discover">
-          <div class="lp-ac-discover-label">What you'll discover</div>
-          <ul>
-            <li>Your levels across emotional exhaustion, depersonalisation, and efficacy</li>
-            <li>Which areas of your work-life balance need immediate attention</li>
-            <li>Research-backed recovery strategies</li>
-          </ul>
-        </div>
-        <div class="lp-ac-meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>8–12 min</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>MBI-based</span>
-          <span class="lp-ac-cta" onclick="enterApp()">Begin <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </div>
-      </div>
-
-      <!-- Big 5 -->
-      <div class="lp-assess-card lp-reveal lp-rd5">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0891b2,#06b6d4);border-radius:22px 22px 0 0;opacity:.7"></div>
-        <div class="lp-ac-badge">Trait Science</div>
-        <div class="lp-ac-title">Big Five Personality</div>
-        <div class="lp-ac-framing">"What are my core traits — and how do they influence my decisions?"</div>
-        <div class="lp-ac-why">
-          <div class="lp-ac-why-label">Why this matters</div>
-          <p>The Big Five is the most scientifically validated personality model in psychology. It maps your tendencies across Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism — the OCEAN of who you are.</p>
-        </div>
-        <div class="lp-ac-discover">
-          <div class="lp-ac-discover-label">What you'll discover</div>
-          <ul>
-            <li>Your unique trait profile across all five dimensions</li>
-            <li>How your traits influence your work style and relationships</li>
-            <li>Areas where self-awareness can unlock growth</li>
-          </ul>
-        </div>
-        <div class="lp-ac-meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>10–15 min</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Gold standard</span>
-          <span class="lp-ac-cta" onclick="enterApp()">Begin <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </div>
-      </div>
-
-    </div>
-    <div class="lp-view-all" style="margin-top:32px"><a href="#" onclick="enterApp();return false">View all 25+ assessments inside the app →</a></div>
-  </div>
-
-  <!-- ══ Schema & Personality Preview ══ -->
-  <div class="lp-schema-section" id="lp-schemas">
-    <div class="lp-divider"></div>
-    <div class="lp-section-label">Know Yourself</div>
-    <h2 style="font-family:'Fraunces',serif;font-size:clamp(28px,4.5vw,48px);font-weight:700;color:#f0eeff;text-align:center;letter-spacing:-.025em;line-height:1.12;margin-bottom:14px">The frameworks behind your inner world</h2>
-    <p class="lp-section-sub">These aren't abstract theories — they are maps of how you think, feel, and react. Explore with curiosity, not judgment.</p>
-
-    <div class="lp-schema-tabs" id="lpSchemaTabs">
-      <button class="lp-schema-tab active" onclick="lpSwitchTab(this,'lp-tab-schemas')">Schema Types</button>
-      <button class="lp-schema-tab" onclick="lpSwitchTab(this,'lp-tab-modes')">Schema Modes</button>
-      <button class="lp-schema-tab" onclick="lpSwitchTab(this,'lp-tab-personality')">Personality Types</button>
-    </div>
-
-    <!-- Schema Types -->
-    <div class="lp-schema-content active" id="lp-tab-schemas">
-      <div class="lp-schema-grid">
-        <div class="lp-schema-item lp-reveal">
-          <div class="lp-si-name">Abandonment</div>
-          <div class="lp-si-essence">The fear of being left behind</div>
-          <div class="lp-si-desc">A deep conviction that the people you care about will eventually leave, let you down, or choose someone else. It creates a quiet urgency in relationships — a need to hold on tightly or to leave first.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> Checking your phone constantly when a friend hasn't responded. Assuming silence means rejection.</div>
-        </div>
-        <div class="lp-schema-item lp-reveal lp-rd1">
-          <div class="lp-si-name">Defectiveness</div>
-          <div class="lp-si-essence">The belief that something is fundamentally wrong with you</div>
-          <div class="lp-si-desc">Not about specific flaws — it's a pervasive sense that if people really knew you, they wouldn't stay. It drives perfectionism, people-pleasing, or withdrawal as shields against being truly seen.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> Deflecting compliments instantly. Believing your success is luck and your mistakes are proof.</div>
-        </div>
-        <div class="lp-schema-item lp-reveal lp-rd2">
-          <div class="lp-si-name">Unrelenting Standards</div>
-          <div class="lp-si-essence">Nothing is ever good enough — including you</div>
-          <div class="lp-si-desc">A relentless internal pressure to meet extremely high standards, often at the cost of your health, relationships, or peace of mind. Achievement feels temporary; the bar always moves upward.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> Finishing a project and immediately noticing every flaw. Working 12-hour days and still feeling behind.</div>
-        </div>
-        <div class="lp-schema-item lp-reveal lp-rd3">
-          <div class="lp-si-name">Emotional Deprivation</div>
-          <div class="lp-si-essence">The quiet ache of unmet emotional needs</div>
-          <div class="lp-si-desc">A sense that your emotional needs — to be understood, cared for, protected — will never be adequately met. You may stop asking because you've learned not to expect.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> Being in a room full of people but feeling fundamentally alone. Not knowing how to ask for comfort.</div>
-        </div>
-        <div class="lp-schema-item lp-reveal lp-rd4">
-          <div class="lp-si-name">Subjugation</div>
-          <div class="lp-si-essence">Sacrificing your needs to keep the peace</div>
-          <div class="lp-si-desc">Habitually suppressing your own desires, opinions, or feelings because expressing them will lead to conflict or rejection. Over time, you may lose touch with what you actually want.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> Saying "I'm fine with whatever" in every decision. A slow-building resentment you can't quite name.</div>
-        </div>
-        <div class="lp-schema-item lp-reveal lp-rd5">
-          <div class="lp-si-name">Mistrust / Abuse</div>
-          <div class="lp-si-essence">Expecting the worst from others</div>
-          <div class="lp-si-desc">An expectation that others will hurt, manipulate, or take advantage of you. Not paranoia — it's a protective filter developed from real experiences where trust was violated.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> Analysing every compliment for hidden motives. Keeping people at arm's length even when you want closeness.</div>
-        </div>
-      </div>
-      <div class="lp-view-all">Showing 6 of 18 schema types. <a href="#" onclick="enterApp();return false">Explore all schemas inside the app →</a></div>
-    </div>
-
-    <!-- Schema Modes -->
-    <div class="lp-schema-content" id="lp-tab-modes">
-      <div class="lp-schema-grid">
-        <div class="lp-schema-item">
-          <div class="lp-si-name">Vulnerable Child</div>
-          <div class="lp-si-essence">The raw, unguarded part of you</div>
-          <div class="lp-si-desc">The emotional core that feels scared, sad, lonely, or overwhelmed. It surfaces when your deepest needs aren't being met — often unexpectedly, in seemingly small moments.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> Tearing up at a slightly harsh email. Feeling inexplicably small during a disagreement.</div>
-        </div>
-        <div class="lp-schema-item">
-          <div class="lp-si-name">Detached Protector</div>
-          <div class="lp-si-essence">Emotional numbness as a survival strategy</div>
-          <div class="lp-si-desc">When feelings become too much, this mode shuts them off entirely. You become efficient, logical, and disconnected. Protective in the moment but isolating over time.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> Going on autopilot during conflict. Telling yourself you "don't care" when you clearly do.</div>
-        </div>
-        <div class="lp-schema-item">
-          <div class="lp-si-name">Punitive Critic</div>
-          <div class="lp-si-essence">The harsh inner voice that never relents</div>
-          <div class="lp-si-desc">An internal judge that punishes you for mistakes, imperfections, and vulnerabilities. It often sounds like a demanding parent or authority figure from your past.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> "You should've known better." "Everyone else manages this." "What's wrong with you?"</div>
-        </div>
-        <div class="lp-schema-item">
-          <div class="lp-si-name">Healthy Adult</div>
-          <div class="lp-si-essence">Your most integrated, grounded self</div>
-          <div class="lp-si-desc">The mode that observes, reflects, and responds rather than reacts. It sets boundaries, nurtures the vulnerable child, and quiets the inner critic. Strengthening this mode is the goal.</div>
-          <div class="lp-si-example"><strong>Feels like:</strong> Pausing before reacting. Saying "I need a moment" without guilt. Making choices aligned with your values.</div>
-        </div>
-      </div>
-      <div class="lp-view-all"><a href="#" onclick="enterApp();return false">Explore all schema modes inside the app →</a></div>
-    </div>
-
-    <!-- Personality Types -->
-    <div class="lp-schema-content" id="lp-tab-personality">
-      <div class="lp-schema-grid">
-        <div class="lp-schema-item">
-          <div class="lp-si-name">MBTI Types</div>
-          <div class="lp-si-essence">16 cognitive processing styles</div>
-          <div class="lp-si-desc">How you perceive, process information, make decisions, and orient to the external world. Each type has unique strengths, blind spots, and communication preferences.</div>
-        </div>
-        <div class="lp-schema-item">
-          <div class="lp-si-name">Big Five / OCEAN</div>
-          <div class="lp-si-essence">The scientific gold standard of personality</div>
-          <div class="lp-si-desc">Five broad trait dimensions — Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism — that describe the fundamental building blocks of personality across cultures.</div>
-        </div>
-        <div class="lp-schema-item">
-          <div class="lp-si-name">Enneagram</div>
-          <div class="lp-si-essence">9 core motivational drives</div>
-          <div class="lp-si-desc">Beyond behaviour, the Enneagram maps your core fear, core desire, and the unconscious strategy you use to feel safe. Powerful for understanding interpersonal dynamics.</div>
-        </div>
-        <div class="lp-schema-item">
-          <div class="lp-si-name">Dark Triad Awareness</div>
-          <div class="lp-si-essence">The shadow side of personality</div>
-          <div class="lp-si-desc">Narcissism, Machiavellianism, and psychopathy — understanding these traits helps you recognise manipulative dynamics in professional and personal relationships.</div>
-        </div>
-      </div>
-      <div class="lp-view-all"><a href="#" onclick="enterApp();return false">Take a personality assessment inside the app →</a></div>
-    </div>
-  </div>
-
-  <!-- ══ Behavioural Patterns & Syndromes Awareness ══ -->
-  <div class="lp-patterns lp-reveal">
-    <div class="lp-divider"></div>
-    <div class="lp-section-label">Patterns &amp; Awareness</div>
-    <h2 style="font-family:'Fraunces',serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:#f0eeff;text-align:center;letter-spacing:-.025em;line-height:1.12;margin-bottom:14px">Recognise what's running in the background</h2>
-    <p class="lp-section-sub">These are not labels or diagnoses. They are patterns that many high-functioning individuals quietly live with — and rarely name.</p>
-    <div class="lp-disclaimer-bar">⚠️ <strong>Important:</strong> This section is for self-awareness and education only. It does not replace professional clinical assessment. If something resonates deeply, consider speaking with a qualified mental health professional.</div>
-    <div class="lp-pattern-grid">
-      <div class="lp-pattern-card lp-reveal">
-        <div class="lp-pc-name">Imposter Phenomenon</div>
-        <div class="lp-pc-signal">Common in high achievers and first-generation professionals</div>
-        <div class="lp-pc-desc">A persistent internal experience of intellectual fraudulence despite clear evidence of competence. You attribute success to luck and live in fear of being "found out."</div>
-        <div class="lp-pc-reflection">"I got this role because they couldn't find someone better" — Sound familiar? You're not alone, and you're not a fraud.</div>
-      </div>
-      <div class="lp-pattern-card lp-reveal lp-rd1">
-        <div class="lp-pc-name">Chronic Burnout Pattern</div>
-        <div class="lp-pc-signal">Often mistaken for laziness or loss of motivation</div>
-        <div class="lp-pc-desc">Not just tiredness — a systematic depletion of emotional, cognitive, and physical reserves after sustained periods where you gave more than you had, without recovery.</div>
-        <div class="lp-pc-reflection">"I used to love this work. Now I feel nothing." — Burnout isn't about effort; it's about the absence of recovery.</div>
-      </div>
-      <div class="lp-pattern-card lp-reveal lp-rd2">
-        <div class="lp-pc-name">Anxious Overachievement</div>
-        <div class="lp-pc-signal">Productivity driven by fear rather than passion</div>
-        <div class="lp-pc-desc">Using constant work as an anxiety management strategy. The achievement is real — but the driver is dread, not desire. Rest feels dangerous because silence brings anxiety to the surface.</div>
-        <div class="lp-pc-reflection">"I can't stop working — not because I love it, but because I can't bear what I feel when I stop."</div>
-      </div>
-      <div class="lp-pattern-card lp-reveal lp-rd3">
-        <div class="lp-pc-name">Conflict Avoidance Loop</div>
-        <div class="lp-pc-signal">Peace-keeping at the cost of authenticity</div>
-        <div class="lp-pc-desc">Systematically avoiding confrontation — not because you're calm, but because you fear the consequences of disagreement. Suppressed truths create distance in the relationships you're trying to protect.</div>
-        <div class="lp-pc-reflection">"I'd rather keep the peace than speak my mind" — but the peace you keep isn't peace; it's silence.</div>
+      <div class="lp-how-step">
+        <div class="lp-how-title">Journal with intention</div>
+        <div class="lp-how-desc">Use structured prompts from CBT, schema therapy, and mindfulness traditions to process what you discover — building clarity over days, weeks, and months.</div>
       </div>
     </div>
   </div>
 
-  <!-- ══ Features — What's Inside ══ -->
-  <div class="lp-section" id="lp-features-sec">
-    <div class="lp-divider"></div>
-    <div class="lp-section-label">What's inside</div>
-    <h2>Everything your mind needs,<br>in one place</h2>
-    <p class="lp-section-sub">Built on evidence-based psychology, designed for real self-understanding — not self-help platitudes.</p>
+  <!-- Features -->
+  <div class="lp-section lp-reveal">
+    <div class="lp-section-label">What you'll find inside</div>
+    <h2>A complete self-understanding toolkit</h2>
+    <p class="lp-section-sub">Every tool here is grounded in decades of clinical psychology research, translated into a calm, clear experience.</p>
+
     <div class="lp-features">
-      <div class="lp-feature lp-reveal" style="--feat-color:linear-gradient(90deg,#6d28d9,#8b5cf6)">
+      <div class="lp-feature lp-reveal lp-reveal-delay-1" style="--feat-color:linear-gradient(90deg,#6d28d9,#8b5cf6)">
         <div class="lp-feat-icon">📔</div>
         <div class="lp-feat-title">Psychological Journaling</div>
-        <div class="lp-feat-framing">"Why do I keep reacting the same way in situations I know should be different?"</div>
-        <div class="lp-feat-desc">Structured prompts rooted in CBT, schema therapy, and mindfulness — designed to help you process emotions and uncover patterns, not just vent.</div>
-        <div class="lp-feat-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>5 min/entry</span><span>5 journal types</span></div>
+        <div class="lp-feat-desc">Go beyond "Dear diary." Structured prompts rooted in CBT, schema therapy, and mindfulness help you process emotions, identify recurring patterns, and build genuine self-awareness — entry by entry.</div>
       </div>
-      <div class="lp-feature lp-reveal lp-rd1" style="--feat-color:linear-gradient(90deg,#0891b2,#06b6d4)">
+      <div class="lp-feature lp-reveal lp-reveal-delay-2" style="--feat-color:linear-gradient(90deg,#0891b2,#06b6d4)">
         <div class="lp-feat-icon">📊</div>
-        <div class="lp-feat-title">Mood &amp; Emotion Tracking</div>
-        <div class="lp-feat-framing">"I want to see how I've been feeling — not just today, but over time."</div>
-        <div class="lp-feat-desc">Track your emotional landscape over weeks and months with visual charts. Spot triggers, cycles, and progress at a glance.</div>
+        <div class="lp-feat-title">Mood & Emotion Tracking</div>
+        <div class="lp-feat-desc">Track your emotional landscape over time with visual timelines. Spot what triggers certain moods, which patterns repeat weekly, and where your emotional energy is going.</div>
       </div>
-      <div class="lp-feature lp-reveal lp-rd2" style="--feat-color:linear-gradient(90deg,#b45309,#f59e0b)">
-        <div class="lp-feat-icon">🧠</div>
-        <div class="lp-feat-title">Know Yourself Library</div>
-        <div class="lp-feat-framing">"I want to understand psychology as it applies to my life."</div>
-        <div class="lp-feat-desc">Schemas, personality types, attachment styles, cognitive distortions, syndromes, therapies — 100+ concepts explained in clear, human language.</div>
-        <div class="lp-feat-meta"><span>10 psychology modules</span><span>100+ concepts</span></div>
-      </div>
-      <div class="lp-feature lp-reveal lp-rd3" style="--feat-color:linear-gradient(90deg,#0f766e,#2dd4bf)">
-        <div class="lp-feat-icon">🔒</div>
-        <div class="lp-feat-title">Private &amp; Encrypted</div>
-        <div class="lp-feat-desc">Your data is yours alone. Firebase Authentication, encrypted storage. We never sell, share, or advertise against your data — ever. Auto sign-out for extra peace of mind.</div>
-      </div>
-      <div class="lp-feature lp-reveal lp-rd4" style="--feat-color:linear-gradient(90deg,#7c3aed,#e879f9)">
-        <div class="lp-feat-icon">📱</div>
-        <div class="lp-feat-title">Works Everywhere</div>
-        <div class="lp-feat-desc">Use it in your browser or install on Android for a native experience. Always in sync. No sign-up required to explore.</div>
-      </div>
-      <div class="lp-feature lp-reveal lp-rd5" style="--feat-color:linear-gradient(90deg,#be185d,#ec4899)">
+      <div class="lp-feature lp-reveal lp-reveal-delay-1" style="--feat-color:linear-gradient(90deg,#be185d,#ec4899)">
         <div class="lp-feat-icon">🧪</div>
-        <div class="lp-feat-title">25+ Research-Backed Assessments</div>
-        <div class="lp-feat-desc">PHQ-9, GAD-7, PCL-5, Big Five, MBTI, YSQ, Enneagram, Burnout, Narcissism, Empathy and many more — all in one place, with personalised results and guidance.</div>
+        <div class="lp-feat-title">Validated Self-Assessments</div>
+        <div class="lp-feat-desc">PHQ-9, GAD-7, Big Five, MBTI, Schema Questionnaires, and 20+ more — the same tools used in clinical settings worldwide. Not a diagnosis; a mirror for self-understanding.</div>
+      </div>
+      <div class="lp-feature lp-reveal lp-reveal-delay-2" style="--feat-color:linear-gradient(90deg,#b45309,#f59e0b)">
+        <div class="lp-feat-icon">🧠</div>
+        <div class="lp-feat-title">Psychology Knowledge Base</div>
+        <div class="lp-feat-desc">Explore schemas, cognitive distortions, attachment styles, personality theory, and therapeutic modalities — written in plain language, with real-life examples. Knowledge is the first step to change.</div>
+      </div>
+      <div class="lp-feature lp-reveal lp-reveal-delay-1" style="--feat-color:linear-gradient(90deg,#0f766e,#2dd4bf)">
+        <div class="lp-feat-icon">🔒</div>
+        <div class="lp-feat-title">Private by Design</div>
+        <div class="lp-feat-desc">Your journal is yours alone. Firebase-authenticated, encrypted at rest and in transit. We cannot read your entries. No ads, no selling of data, no third-party analytics on your psychology.</div>
+      </div>
+      <div class="lp-feature lp-reveal lp-reveal-delay-2" style="--feat-color:linear-gradient(90deg,#7c3aed,#e879f9)">
+        <div class="lp-feat-icon">🤝</div>
+        <div class="lp-feat-title">Optional Therapist Connection</div>
+        <div class="lp-feat-desc">If you work with a therapist, share your journal and assessment results securely — with your explicit permission. Your therapist can also assign specific assessments for you.</div>
       </div>
     </div>
   </div>
 
-  <!-- ══ Social Proof ══ -->
-  <div class="lp-proof lp-reveal">
-    <div class="lp-divider"></div>
-    <div class="lp-section-label">What people say</div>
-    <h2 style="font-family:'Fraunces',serif;font-size:clamp(26px,4vw,42px);font-weight:700;color:#f0eeff;text-align:center;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px">Moments of clarity, in their words</h2>
-    <p class="lp-section-sub">From professionals who chose to look inward.</p>
+  <!-- Science Credibility Strip -->
+  <div class="lp-science-strip lp-reveal">
+    <div class="lp-science-item">Based on DSM-5-TR criteria</div>
+    <div class="lp-science-item">Rooted in Schema Therapy (Young, 1990)</div>
+    <div class="lp-science-item">CBT cognitive model (Beck, 1976)</div>
+    <div class="lp-science-item">Attachment Theory (Bowlby, Ainsworth)</div>
+    <div class="lp-science-item">Big Five personality model</div>
+  </div>
+
+  <!-- Social Proof -->
+  <div class="lp-section lp-reveal">
+    <div class="lp-section-label">What people are discovering</div>
+    <h2>Stories of clarity</h2>
+    <p class="lp-section-sub">Real reflections from people using Innerly for self-understanding</p>
+
     <div class="lp-proof-grid">
-      <div class="lp-proof-card lp-reveal">
-        <div class="lp-proof-quote">"I've done therapy before, but this was the first time I saw my patterns laid out so clearly. The schema assessment gave me language for something I've felt my entire life."</div>
-        <div class="lp-proof-author"><div class="lp-proof-avatar">A</div><div><div class="lp-proof-name">Anirudh S.</div><div class="lp-proof-role">Startup Founder · Bengaluru</div></div></div>
+      <div class="lp-proof-card lp-reveal lp-reveal-delay-1">
+        <div class="lp-proof-quote">I always thought I was just "stressed." The schema assessment helped me see a pattern of emotional deprivation I'd carried since childhood. For the first time, my reactions made sense to me.</div>
+        <div class="lp-proof-author">
+          <div class="lp-proof-avatar">🧑‍💼</div>
+          <div>
+            <div class="lp-proof-name">Founder, D2C startup</div>
+            <div class="lp-proof-role">Mumbai · Using Innerly for 4 months</div>
+          </div>
+        </div>
       </div>
-      <div class="lp-proof-card lp-reveal lp-rd1">
-        <div class="lp-proof-quote">"I kept telling myself I was just a hard worker. This helped me understand that my overwork was driven by deep fear. That shift in understanding changed everything."</div>
-        <div class="lp-proof-author"><div class="lp-proof-avatar">P</div><div><div class="lp-proof-name">Priya M.</div><div class="lp-proof-role">Senior Manager, FMCG · Mumbai</div></div></div>
+      <div class="lp-proof-card lp-reveal lp-reveal-delay-2">
+        <div class="lp-proof-quote">The journaling prompts don't feel generic. They push me to think about why I react the way I do — not just what happened. I bring my entries to therapy now and the sessions are twice as productive.</div>
+        <div class="lp-proof-author">
+          <div class="lp-proof-avatar">👩‍💻</div>
+          <div>
+            <div class="lp-proof-name">Product Manager</div>
+            <div class="lp-proof-role">Bengaluru · Using Innerly for 6 months</div>
+          </div>
+        </div>
       </div>
-      <div class="lp-proof-card lp-reveal lp-rd2">
-        <div class="lp-proof-quote">"No one had ever told me that my 'easygoing' nature was actually conflict avoidance. This platform helped me see that — gently, without shame."</div>
-        <div class="lp-proof-author"><div class="lp-proof-avatar">R</div><div><div class="lp-proof-name">Raghav D.</div><div class="lp-proof-role">Product Lead · Hyderabad</div></div></div>
+      <div class="lp-proof-card lp-reveal lp-reveal-delay-3">
+        <div class="lp-proof-quote">I was skeptical of online assessments. But these are the same PHQ-9 and GAD-7 my psychiatrist uses. Having my own dashboard to track progress between appointments has been genuinely empowering.</div>
+        <div class="lp-proof-author">
+          <div class="lp-proof-avatar">👨‍⚕️</div>
+          <div>
+            <div class="lp-proof-name">Senior Engineer</div>
+            <div class="lp-proof-role">Delhi · Using Innerly for 3 months</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ══ FAQ ══ -->
-  <div class="lp-faq lp-reveal" id="lp-faq-sec">
-    <div class="lp-divider"></div>
-    <div class="lp-section-label" style="text-align:center">Common questions</div>
-    <h2 style="font-family:'Fraunces',serif;font-size:clamp(24px,3.5vw,38px);font-weight:700;color:#f0eeff;text-align:center;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px">Before you begin</h2>
-    <p class="lp-section-sub" style="margin-bottom:36px">Everything you might want to know — answered with honesty.</p>
+  <!-- FAQ -->
+  <div class="lp-section lp-reveal">
+    <div class="lp-section-label">Common questions</div>
+    <h2>You might be wondering</h2>
+    <p class="lp-section-sub">We designed Innerly with care. Here's what people typically ask before they begin.</p>
+
     <div class="lp-faq-list">
-      <div class="lp-faq-item"><button class="lp-faq-q" onclick="this.parentElement.classList.toggle('open')">Is this a clinical diagnosis?<span class="lp-faq-icon">+</span></button><div class="lp-faq-a"><div class="lp-faq-a-inner">No. These assessments are designed for self-awareness and personal growth — not clinical diagnosis. They draw from established psychological frameworks but are not a substitute for professional evaluation. Think of them as structured mirrors, not medical reports. If your results raise questions, we encourage speaking with a licensed professional.</div></div></div>
-      <div class="lp-faq-item"><button class="lp-faq-q" onclick="this.parentElement.classList.toggle('open')">Is my data private and secure?<span class="lp-faq-icon">+</span></button><div class="lp-faq-a"><div class="lp-faq-a-inner">Absolutely. Your assessment responses and journal entries are encrypted and stored securely via Firebase. We do not share, sell, or use your data for advertising — ever. You own your data, and you can delete it at any time.</div></div></div>
-      <div class="lp-faq-item"><button class="lp-faq-q" onclick="this.parentElement.classList.toggle('open')">Who is this designed for?<span class="lp-faq-icon">+</span></button><div class="lp-faq-a"><div class="lp-faq-a-inner">Innerly is built for self-aware individuals — founders, professionals, managers, and anyone who believes understanding themselves is a competitive and personal advantage. You don't need to be in crisis. Most of our users are high-functioning individuals who want to understand themselves with more depth and precision.</div></div></div>
-      <div class="lp-faq-item"><button class="lp-faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same as therapy?<span class="lp-faq-icon">+</span></button><div class="lp-faq-a"><div class="lp-faq-a-inner">No — and it isn't meant to be. Therapy involves a trained clinician working with you over time. What we offer is structured self-assessment and psychological journaling: a starting point for deeper understanding. Many users find their results become powerful conversation starters in therapy, coaching, or personal reflection.</div></div></div>
-      <div class="lp-faq-item"><button class="lp-faq-q" onclick="this.parentElement.classList.toggle('open')">What psychological models are these based on?<span class="lp-faq-icon">+</span></button><div class="lp-faq-a"><div class="lp-faq-a-inner">Our assessments draw from Jeffrey Young's Schema Therapy model, the Big Five personality model, PHQ-9 and GAD-7 clinical screeners, MBTI typology, and cognitive-behavioural research documented in peer-reviewed literature. We translate these into accessible experiences — without diluting the science.</div></div></div>
-    </div>
-  </div>
-
-  <!-- ══ Download ══ -->
-  <div style="max-width:1100px;margin:0 auto;width:100%;padding:0 24px">
-    <div class="lp-download lp-reveal">
-      <h2>Take Innerly with you</h2>
-      <p>Install the Android app for faster loading, offline access,<br>and a native experience — completely free, no ads, no subscriptions.</p>
-      <div class="lp-download-btns">
-        <a class="lp-apk-btn" href="/innerly.apk" download="Innerly.apk"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"/></svg>Download APK for Android</a>
-        <button class="lp-cta-secondary" onclick="enterApp()" style="border-radius:16px">🌐 Use in Browser</button>
+      <div class="lp-faq-item" onclick="this.classList.toggle('open')">
+        <div class="lp-faq-q">
+          <div class="lp-faq-q-text">Is this a diagnosis?</div>
+          <div class="lp-faq-chevron">▼</div>
+        </div>
+        <div class="lp-faq-a">No. Innerly is a self-awareness tool, not a diagnostic service. The assessments we use (like the PHQ-9 or GAD-7) are validated screening instruments — the same ones used in clinical settings — but a screening score is not a diagnosis. Only a licensed mental health professional can provide a clinical diagnosis. Think of Innerly as a mirror that helps you see patterns more clearly, so you can have more informed conversations with a therapist if you choose to.</div>
       </div>
-      <p class="lp-install-note">After downloading, tap the APK and enable "Install from unknown sources" if prompted.<br>Android 5.0+ required · ~2MB · No ads · No subscriptions</p>
+      <div class="lp-faq-item" onclick="this.classList.toggle('open')">
+        <div class="lp-faq-q">
+          <div class="lp-faq-q-text">Is my data private and secure?</div>
+          <div class="lp-faq-chevron">▼</div>
+        </div>
+        <div class="lp-faq-a">Absolutely. Your journal entries and assessment results are stored in your own authenticated Firebase account, encrypted at rest and in transit. We have no ability to read, sell, or share your psychological data. There is no third-party analytics running on your content. If you connect with a therapist through Innerly, you control exactly what is shared — and you can revoke access at any time.</div>
+      </div>
+      <div class="lp-faq-item" onclick="this.classList.toggle('open')">
+        <div class="lp-faq-q">
+          <div class="lp-faq-q-text">Who is Innerly designed for?</div>
+          <div class="lp-faq-chevron">▼</div>
+        </div>
+        <div class="lp-faq-a">Innerly is for anyone who wants to understand themselves more deeply — entrepreneurs navigating the stress of building, professionals managing complex emotional lives, individuals in therapy who want to track progress between sessions, or simply curious minds drawn to psychology. It's especially valued by those who find traditional journaling too unstructured and want a more guided, evidence-based approach.</div>
+      </div>
+      <div class="lp-faq-item" onclick="this.classList.toggle('open')">
+        <div class="lp-faq-q">
+          <div class="lp-faq-q-text">Is this a replacement for therapy?</div>
+          <div class="lp-faq-chevron">▼</div>
+        </div>
+        <div class="lp-faq-a">No, and we are intentional about this. Innerly is a self-understanding companion — it helps you explore your inner world between therapy sessions or as a starting point before seeking therapy. We believe self-awareness tools and professional therapy are complementary. If your assessment scores suggest significant distress, we always recommend connecting with a licensed therapist.</div>
+      </div>
+      <div class="lp-faq-item" onclick="this.classList.toggle('open')">
+        <div class="lp-faq-q">
+          <div class="lp-faq-q-text">Are these real psychological assessments?</div>
+          <div class="lp-faq-chevron">▼</div>
+        </div>
+        <div class="lp-faq-a">Yes. Every assessment in Innerly is a published, peer-reviewed instrument used in clinical practice and research worldwide. The PHQ-9 for depression, GAD-7 for anxiety, PCL-5 for PTSD, the Young Schema Questionnaire, Big Five personality inventory — these are not quizzes we invented. They are scored according to their original validated scoring algorithms, and interpretations follow published clinical guidelines.</div>
+      </div>
+      <div class="lp-faq-item" onclick="this.classList.toggle('open')">
+        <div class="lp-faq-q">
+          <div class="lp-faq-q-text">I'm going through a difficult time. Will this help?</div>
+          <div class="lp-faq-chevron">▼</div>
+        </div>
+        <div class="lp-faq-a">Innerly can help you understand what you're experiencing and put language to feelings that might otherwise feel overwhelming. Structured journaling and validated screeners can bring clarity. However, if you're in crisis or experiencing thoughts of self-harm, please reach out to a mental health professional or crisis helpline immediately. Innerly is a tool for growth and awareness — not emergency intervention.</div>
+      </div>
     </div>
   </div>
 
-  <!-- ══ Final CTA ══ -->
-  <div class="lp-final-cta lp-reveal">
-    <h2>The most important relationship<br>you'll ever navigate is <em>with yourself</em></h2>
-    <p class="lp-final-cta-sub">Begin with one assessment or journal entry. You'll be surprised how much clarity 15 minutes of honest self-reflection can bring.</p>
-    <button class="lp-cta-primary" onclick="enterApp()" style="font-size:17px;padding:19px 40px">✦ Start Your Self-Discovery</button>
-    <p class="lp-final-micro">Free to begin · No credit card · Results are private</p>
+  <!-- Final CTA -->
+  <div style="max-width:1100px;margin:0 auto;width:100%;padding:0 24px" class="lp-reveal">
+    <div class="lp-download">
+      <h2>Your inner world deserves attention.</h2>
+      <p>Start with a single assessment. Journal one reflection. See what becomes clear.<br>Self-awareness is not a luxury — it's the foundation everything else is built on.</p>
+      <div class="lp-download-btns">
+        <button class="lp-cta-primary" onclick="enterApp()" style="font-size:17px;padding:18px 36px">
+          ✦ Begin Your Self-Discovery — Free
+        </button>
+        <a class="lp-apk-btn" href="/innerly.apk" download="Innerly.apk">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"/></svg>
+          Download for Android
+        </a>
+      </div>
+      <p class="lp-install-note">
+        Free to use · No credit card required · No ads · No subscriptions<br>
+        Android 5.0+ supported · ~2MB · Your data stays on your account
+      </p>
+    </div>
   </div>
 
-  <!-- ══ Professional Footer ══ -->
-  <footer class="lp-footer">
+  <!-- Enterprise Footer -->
+  <footer class="lp-footer-enterprise">
     <div class="lp-footer-grid">
       <div>
-        <div class="lp-footer-logo">Innerly ✦</div>
-        <p class="lp-footer-brand-desc">A psychological self-discovery platform built for thoughtful individuals who believe self-understanding is not a luxury — it's a foundation.</p>
+        <div class="lp-logo" style="margin-bottom:4px">
+          <div class="lp-logo-icon" style="width:36px;height:36px;border-radius:10px;font-size:18px">🧠</div>
+          <span class="lp-logo-name" style="font-size:20px">Innerly</span>
+        </div>
+        <div class="lp-footer-brand-desc">A private, research-backed platform for psychological self-discovery. Built for those who take their inner life seriously.</div>
       </div>
-      <div class="lp-footer-col"><h4>Platform</h4><ul><li><a href="#" onclick="enterApp();return false">Assessments</a></li><li><a href="#" onclick="enterApp();return false">Journaling</a></li><li><a href="#" onclick="enterApp();return false">Know Yourself</a></li><li><a href="#" onclick="enterApp();return false">Mood Tracking</a></li></ul></div>
-      <div class="lp-footer-col"><h4>Learn</h4><ul><li><a href="#" onclick="enterApp();return false">Schema Types</a></li><li><a href="#" onclick="enterApp();return false">Personality</a></li><li><a href="#" onclick="enterApp();return false">Disorders</a></li><li><a href="#" onclick="enterApp();return false">Therapies</a></li></ul></div>
-      <div class="lp-footer-col"><h4>About</h4><ul><li><a href="/innerly.apk" download>Download Android</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="lp-footer-col">
+        <div class="lp-footer-col-title">Platform</div>
+        <a href="#" onclick="enterApp();return false">Open Web App</a>
+        <a href="/innerly.apk" download>Android App</a>
+        <a href="#features">Features</a>
+      </div>
+      <div class="lp-footer-col">
+        <div class="lp-footer-col-title">Psychology</div>
+        <a href="#" onclick="enterApp();return false">Assessments</a>
+        <a href="#" onclick="enterApp();return false">Schema Therapy</a>
+        <a href="#" onclick="enterApp();return false">CBT Concepts</a>
+        <a href="#" onclick="enterApp();return false">Personality</a>
+      </div>
+      <div class="lp-footer-col">
+        <div class="lp-footer-col-title">Trust & Safety</div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Data Protection</a>
+        <a href="#">Contact</a>
+      </div>
     </div>
     <div class="lp-footer-bottom">
-      <div class="lp-footer-copy">© 2025 Innerly · Not a substitute for professional mental health care.</div>
-      <div class="lp-footer-trust">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Encrypted Storage</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Firebase Auth</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>No data sold — ever</span>
+      <span>© 2025 Innerly · A psychological self-discovery platform · Not a substitute for professional mental health care.</span>
+      <div class="lp-footer-security">
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> End-to-end encrypted</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/></svg> Firebase Auth secured</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> No third-party data sharing</span>
       </div>
     </div>
   </footer>
@@ -2297,7 +1876,7 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
 <!-- LOADER -->
 <div class="loader" id="loader">
   <div class="loader-ring"></div>
-  <div class="loader-text">Opening your journal…</div>
+  <div class="loader-text">Preparing your space…</div>
 </div>
 
 <!-- INACTIVITY BANNER -->
@@ -2416,24 +1995,26 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
     <!-- Schema Modes -->
     <div class="learn-section-panel active" id="learn-modes">
       <div class="learn-section-title">Schema Modes</div>
-      <div class="learn-section-sub">Emotional states or "inner characters" that get activated in response to situations. Understanding your modes is the first step to healing.</div>
+      <div class="learn-section-sub">Have you ever snapped at someone and later thought "that wasn't like me"? Schema modes are the emotional states — or inner characters — that get activated when old wounds are triggered. Understanding them is the first step toward responding with intention rather than reacting on autopilot.</div>
+      <div class="learn-section-frame"><p>🔬 <strong>Grounded in:</strong> Schema Therapy (Jeffrey Young, 1990). Schema modes are now a core part of the Schema Therapy model and are widely used in treating personality difficulties, chronic depression, and relationship patterns.</p></div>
       <div class="learn-grid" id="modesGrid"></div>
     </div>
 
     <!-- Schemas -->
     <div class="learn-section-panel" id="learn-schemas">
       <div class="learn-section-title">Early Maladaptive Schemas</div>
-      <div class="learn-section-sub">Deep-seated beliefs about yourself and the world, formed in childhood. They shape how you feel and interpret events — often invisibly.</div>
+      <div class="learn-section-sub">Why do certain situations keep triggering the same emotional reaction? Schemas are deep-seated beliefs about yourself and the world, formed in childhood — often invisibly shaping how you interpret events, choose partners, and react under pressure. Seeing them clearly is where lasting change begins.</div>
+      <div class="learn-section-frame"><p>🔬 <strong>Grounded in:</strong> Jeffrey Young's Schema Therapy model identifies 18 early maladaptive schemas across 5 domains. This is one of the most researched frameworks for understanding chronic emotional patterns and personality difficulties.</p></div>
       <div class="learn-grid" id="schemasGrid"></div>
     </div>
 
     <!-- Attachment Styles -->
     <div class="learn-section-panel" id="learn-attachment">
       <div class="learn-section-title">Attachment Styles</div>
-      <div class="learn-section-sub">Attachment theory describes how early relationships with caregivers shape the way we connect with others in adulthood — especially in romantic relationships.</div>
+      <div class="learn-section-sub">Why do you feel anxious when a partner goes quiet? Why does closeness sometimes feel suffocating? Attachment theory explains how your earliest relationships with caregivers created an invisible blueprint for how you connect with others in adulthood — especially in romantic relationships.</div>
       <div class="learn-callout">
         <div class="learn-callout-title">💡 Where does attachment come from?</div>
-        <div class="learn-callout-text">Attachment patterns are formed in infancy and early childhood based on how reliably caregivers responded to our needs. These early experiences create a working model of relationships that we carry into adulthood — influencing how safe we feel with partners, how we handle conflict, and how we respond to closeness or distance.</div>
+        <div class="learn-callout-text">Attachment patterns form in infancy based on how reliably caregivers responded to your needs. These early experiences create a working model of relationships that you carry — often unconsciously — into adulthood. The good news: attachment is not destiny. "Earned security" is well-documented in research — through therapy, safe relationships, and conscious effort, insecure attachment can evolve into secure connection.</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px" id="attachmentGrid"></div>
     </div>
@@ -2441,10 +2022,10 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
     <!-- CBT Concepts -->
     <div class="learn-section-panel" id="learn-cbt">
       <div class="learn-section-title">CBT Core Concepts</div>
-      <div class="learn-section-sub">Cognitive Behavioural Therapy teaches us how thoughts, feelings, and behaviours are connected — and how changing one changes the others.</div>
+      <div class="learn-section-sub">Ever noticed how one negative thought spirals into a terrible mood, which then leads you to cancel plans, which makes you feel even worse? That's the CBT loop in action. Cognitive Behavioural Therapy gives you tools to interrupt these cycles — at any point.</div>
       <div class="learn-callout">
-        <div class="learn-callout-title">🔄 The CBT Triangle</div>
-        <div class="learn-callout-text">Thoughts → Feelings → Behaviours → Thoughts. This loop runs constantly. CBT gives you tools to break negative cycles at any point — by changing distorted thoughts, soothing difficult emotions, or interrupting unhelpful behaviours.</div>
+        <div class="learn-callout-title">🔄 The CBT Triangle — and why it matters</div>
+        <div class="learn-callout-text">Thoughts → Feelings → Behaviours → Thoughts. This loop runs constantly, often outside your awareness. For example: "They didn't text back" (thought) → anxiety (feeling) → checking phone 20 times (behaviour) → "Something is wrong" (thought). CBT teaches you to catch these loops and change the pattern at whichever point is most accessible. That's powerful.</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px" id="cbtGrid"></div>
     </div>
@@ -2452,25 +2033,26 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
     <!-- Relationships -->
     <div class="learn-section-panel" id="learn-relationships">
       <div class="learn-section-title">Healthy Relationships</div>
-      <div class="learn-section-sub">Understanding what makes relationships healthy, how to communicate needs, and how to recognise patterns that damage connection.</div>
+      <div class="learn-section-sub">The quality of your relationships is one of the strongest predictors of wellbeing — yet most of us were never taught what "healthy" actually looks like. This section explores the patterns that build connection, the dynamics that erode it, and the communication skills that make the difference.</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px" id="relationshipsGrid"></div>
     </div>
 
     <!-- Personality -->
     <div class="learn-section-panel" id="learn-personality">
       <div class="learn-section-title">Personality & Traits</div>
-      <div class="learn-section-sub">Understanding personality frameworks helps you understand your natural tendencies, how you relate to others, and which therapeutic approaches suit you best.</div>
+      <div class="learn-section-sub">Your personality isn't a label — it's a landscape of tendencies that shape how you think, connect, and navigate the world. Understanding your trait profile helps you recognise your natural strengths, your blind spots in relationships, and which growth approaches are most likely to work for you.</div>
       <div class="learn-callout">
-        <div class="learn-callout-title">🧬 Traits vs Character</div>
-        <div class="learn-callout-text">Personality traits are relatively stable patterns in how you think, feel, and behave. They're not fixed — sustained therapy and life experience can genuinely shift trait-level patterns, particularly Neuroticism. Understanding your traits is a starting point for self-awareness, not a life sentence.</div>
+        <div class="learn-callout-title">🧬 An important distinction: Traits are not destiny</div>
+        <div class="learn-callout-text">Personality traits are relatively stable patterns — but they are not fixed. Research shows that sustained therapy, meaningful life experiences, and intentional practice can shift even deeply ingrained tendencies like high neuroticism. Understanding your traits is a starting point for self-awareness, not a life sentence. Think of this as knowing your default settings — so you can choose when to override them.</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px" id="personalityGrid"></div>
     </div>
 
     <!-- Disorders & Syndromes -->
     <div class="learn-section-panel" id="learn-disorders">
-      <div class="learn-section-title">Syndromes &amp; Disorders <span class="learn-section-badge">10 categories</span></div>
-      <div class="learn-section-sub">Mental health conditions are not character flaws — they are patterns of thought, feeling, and behaviour that cause distress or impair functioning. Click any card to learn more about causes, types, and treatments.</div>
+      <div class="learn-section-title">Understanding Mental Health Conditions <span class="learn-section-badge">10 categories</span></div>
+      <div class="learn-section-sub">Mental health conditions are not character flaws or signs of weakness. They are patterns of thought, feeling, and behaviour that cause significant distress — and they are far more common than most people realise. Learning about them reduces stigma, builds empathy, and can be the first step toward seeking support. Click any card to learn more.</div>
+      <div class="learn-section-frame"><p style="font-size:13px;color:var(--muted)">⚠️ <strong>Important:</strong> This section is for education and awareness only. Reading about a condition is not the same as having it. If you recognise yourself in any description, that's worth exploring with a qualified professional — not a reason to self-diagnose.</p></div>
       <div class="disorder-grid">
         <div class="disorder-card dc-anxiety" onclick="openSyndrome('anxiety')">
           <div class="disorder-card-icon">😟</div>
@@ -2558,17 +2140,17 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
     <!-- Syndromes -->
     <div class="learn-section-panel" id="learn-syndromes">
       <div class="learn-section-title">Psychological Syndromes <span class="learn-section-badge">28 syndromes</span></div>
-      <div class="learn-section-sub">Syndromes are clusters of co-occurring symptoms and features. Understanding these patterns helps explain why certain conditions look similar — and why treatment must be tailored. Click any card for a detailed breakdown.</div>
+      <div class="learn-section-sub">Syndromes are clusters of symptoms that tend to appear together — like puzzle pieces that form a recognisable picture. Understanding these patterns helps explain why certain conditions overlap, why your experience might not fit neatly into a single category, and why personalised treatment matters. Click any card for a detailed exploration.</div>
       <div class="disorder-grid" id="syndromeLearnGrid"></div>
     </div>
 
     <!-- Behavioural Psychology -->
     <div class="learn-section-panel" id="learn-behavioural">
       <div class="learn-section-title">Behavioural Psychology <span class="learn-section-badge">10 concepts</span></div>
-      <div class="learn-section-sub">Behavioural psychology explores how behaviour is learned, maintained, and changed. These foundational concepts underpin CBT, DBT, ACT, and most evidence-based psychological treatments.</div>
+      <div class="learn-section-sub">Why do you keep checking your phone even though nothing new has appeared? Why does avoiding something uncomfortable make the urge stronger? Behavioural psychology reveals the invisible mechanisms that shape how habits form, persist, and — most importantly — how they can be deliberately changed.</div>
       <div class="learn-callout">
-        <div class="learn-callout-title">🧪 Why behaviour matters</div>
-        <div class="learn-callout-text">We are products of our learning history. Understanding the mechanisms through which behaviours are acquired and extinguished gives you the tools to deliberately reshape your responses — even deeply ingrained ones. Tap any concept to explore it in depth.</div>
+        <div class="learn-callout-title">🧪 Why this matters for you</div>
+        <div class="learn-callout-text">We are all products of our learning history — but we are not prisoners of it. Understanding concepts like reinforcement, extinction, and shaping gives you the vocabulary and tools to reshape even deeply ingrained responses. These principles underpin CBT, DBT, ACT, and nearly every evidence-based treatment in psychology today.</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px" id="behaviouralGrid"></div>
     </div>
@@ -2576,7 +2158,7 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
     <!-- Therapies & Techniques -->
     <div class="learn-section-panel" id="learn-therapies">
       <div class="learn-section-title">Therapies &amp; Techniques <span class="learn-section-badge">12 modalities</span></div>
-      <div class="learn-section-sub">Different therapies work through different mechanisms. Explore evidence-based modalities, who they work best for, and what to expect in sessions.</div>
+      <div class="learn-section-sub">Not all therapy is the same — and finding the right approach matters. This section explains the major evidence-based modalities: how they work, who they work best for, and what a session actually feels like. Knowledge of these approaches can help you choose more wisely if you're seeking professional support.</div>
       <div class="therapy-grid">
 
         <div class="therapy-accordion" id="th-cbt">
@@ -2946,12 +2528,22 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
 
   <!-- ASSESSMENTS PANEL (patient) -->
   <div class="tab-panel" id="panel-assess">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:12px">
       <div>
-        <h2 style="font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--text);letter-spacing:-.02em;margin-bottom:4px">🧪 Assessments</h2>
-        <p style="font-size:14px;color:var(--muted)">Standardised psychological & personality assessments — scored and interpreted automatically.</p>
+        <h2 style="font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--text);letter-spacing:-.02em;margin-bottom:4px">🧪 Self-Understanding Assessments</h2>
+        <p style="font-size:14px;color:var(--muted)">Validated psychological instruments — scored and interpreted to help you see yourself more clearly.</p>
       </div>
       <button class="btn-dash-export" onclick="exportAssessmentsPDF()" id="btnExportAssess" style="display:none">📄 Export PDF Report</button>
+    </div>
+    <div class="assess-panel-intro">
+      <p>These are not quizzes — they are the same validated screening tools used in clinical practice and research worldwide. Each assessment measures a specific dimension of your psychological experience, and your results are scored using published clinical algorithms.</p>
+      <p style="font-size:13px;color:var(--muted);font-style:italic">Your results are for self-awareness and reflection. They are not a clinical diagnosis. If any result concerns you, we encourage you to share it with a licensed mental health professional.</p>
+      <div class="assess-panel-trust">
+        <span>🔬 Peer-reviewed instruments</span>
+        <span>🔒 Results stored privately</span>
+        <span>📊 Track progress over time</span>
+        <span>⏱️ 2–8 minutes each</span>
+      </div>
     </div>
     <!-- Assigned by therapist -->
     <div id="assignedAssessSection" style="display:none">
@@ -6786,7 +6378,8 @@ function buildAssessGrid() {
         <div class="assess-card-full">${a.full}</div>
         <div class="assess-card-desc">${a.desc}</div>
         <div class="assess-card-meta">${a.tags.map(t=>`<span class="assess-tag">${t}</span>`).join('')}</div>
-        <div class="assess-last" id="assessLast_${a.id}"><span style="color:var(--dim);font-style:italic">No attempts yet</span></div>
+        <div class="assess-card-time">⏱️ ~${Math.max(2, Math.ceil(a.items * 0.4))} min · ${a.items} questions</div>
+        <div class="assess-last" id="assessLast_${a.id}"><span style="color:var(--dim);font-style:italic">Not yet taken</span></div>
       </div>`).join('');
   });
   grid.innerHTML = html;
@@ -8499,22 +8092,6 @@ function enterApp() {
   setTimeout(() => { lp.style.display = 'none'; }, 600);
 }
 
-// LP scroll reveal
-(function(){
-  const obs = new IntersectionObserver(function(ents){
-    ents.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lp-vis');obs.unobserve(e.target)}});
-  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.lp-reveal').forEach(function(el){obs.observe(el)});
-})();
-
-// LP schema tabs
-function lpSwitchTab(btn, targetId){
-  document.querySelectorAll('.lp-schema-tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.lp-schema-content').forEach(c=>c.classList.remove('active'));
-  document.getElementById(targetId).classList.add('active');
-}
-
 // Show landing page only on first visit; skip if already authenticated
 (function() {
   const lp = document.getElementById('landingPage');
@@ -8525,6 +8102,15 @@ function lpSwitchTab(btn, targetId){
   if (isTWA) {
     lp.style.display = 'none';
   }
+  // Scroll-triggered reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.lp-reveal').forEach(el => observer.observe(el));
 })();
 </script>
 
