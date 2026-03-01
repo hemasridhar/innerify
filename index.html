@@ -2657,7 +2657,7 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
       <div class="table-card" style="margin-top:16px">
         <div class="table-toolbar"><h2 id="therapistViewTitle">Patient Entries</h2><span style="font-size:12px;color:var(--muted);font-style:italic;font-family:'Fraunces',serif">Read-only</span></div>
         <div class="tbl-wrap"><table>
-          <thead><tr><th>#</th><th>Date &amp; Time</th><th style="min-width:100px">Event</th><th style="min-width:130px">Thoughts</th><th style="min-width:130px">Feelings</th><th style="min-width:130px">Behaviour</th><th style="min-width:142px">Schema Mode</th><th style="min-width:158px">Schema</th><th style="min-width:150px">Healthy Adult Alt.</th><th>Intensity</th></tr></thead>
+          <thead><tr><th>#</th><th>Date &amp; Time</th><th style="min-width:90px">Type</th><th style="min-width:110px">Primary</th><th style="min-width:130px">Secondary</th><th style="min-width:130px">Detail</th><th style="min-width:130px">More</th><th>Intensity</th></tr></thead>
           <tbody id="therapistTableBody"></tbody>
         </table></div>
         <div class="empty-state" id="therapistEmpty" style="display:none"><div class="empty-icon">📓</div>No entries yet for this patient.</div>
@@ -4022,6 +4022,7 @@ async function viewPatient(uid, name) {
   await loadProgressNotes(uid);
   await loadTherapistPatientAssessments(uid);
   await loadTherapistAssignedTracker(uid);
+  await loadTherapistPatientCommitments(uid);
 }
 async function cancelRequest(uid, name) {
   if (!confirm(`Cancel connection request to ${name}?`)) return;
@@ -4262,13 +4263,58 @@ function renderReadOnlyTable(tbodyId, emptyId, data) {
   const body=document.getElementById(tbodyId), empty=document.getElementById(emptyId);
   if (!data.length) { body.innerHTML=''; empty.style.display=''; return; }
   empty.style.display='none';
+
+  // Update thead dynamically so columns match the mixed content
+  const thead = body.closest('table')?.querySelector('thead tr');
+  if (thead) {
+    thead.innerHTML = `<th>#</th><th>Date &amp; Time</th><th style="min-width:90px">Type</th><th style="min-width:110px">Primary</th><th style="min-width:130px">Secondary</th><th style="min-width:130px">Detail</th><th style="min-width:130px">More</th><th style="min-width:90px">Intensity</th>`;
+  }
+
   body.innerHTML = data.map((e,i)=>{
     const dt=fmtDT(e.createdAt);
-    const mVals = Array.isArray(e.schemaModes) ? e.schemaModes : (e.schemaModes?[e.schemaModes]:[]);
-    const sVals = Array.isArray(e.schemas) ? e.schemas : (e.schemas?[e.schemas]:[]);
-    const modeChips = mVals.map(v=>`<span class="chip chip-mode">${esc(v)}</span>`).join(' ')||'—';
-    const schemaChips = sVals.map(v=>`<span class="chip chip-schema">${esc(v)}</span>`).join(' ')||'—';
-    return`<tr><td><span class="row-num">${i+1}</span></td><td><div class="dt">${esc(dt.date)}</div><div class="dt-time">${esc(dt.time)}</div></td><td><div class="cell-wrap">${esc(e.event)}</div></td><td><div class="cell-wrap">${esc(e.thoughts)}</div></td><td><div class="cell-wrap">${esc(e.feelings)}</div></td><td><div class="cell-wrap">${esc(e.behaviour)}</div></td><td><div style="display:flex;flex-wrap:wrap;gap:4px">${modeChips}</div></td><td><div style="display:flex;flex-wrap:wrap;gap:4px">${schemaChips}</div></td><td><div class="cell-wrap">${esc(e.healthyAdult)}</div></td><td><div class="intensity-stars">${stars(e.intensity)}</div></td></tr>`;
+    const jtype = e.journalType || 'schema';
+    const typeTag = jtypeTag(jtype);
+    let c1='—', c2='—', c3='—', c4='—';
+
+    if (jtype === 'schema') {
+      const mVals = Array.isArray(e.schemaModes) ? e.schemaModes : (e.schemaModes?[e.schemaModes]:[]);
+      const sVals = Array.isArray(e.schemas) ? e.schemas : (e.schemas?[e.schemas]:[]);
+      c1 = esc(e.event||'—');
+      c2 = esc(e.thoughts||'—');
+      c3 = mVals.map(v=>`<span class="chip chip-mode">${esc(v)}</span>`).join(' ')||'—';
+      c4 = sVals.map(v=>`<span class="chip chip-schema">${esc(v)}</span>`).join(' ')||'—';
+    } else if (jtype === 'mood') {
+      c1 = `<span class="chip chip-mood-score">${esc(e.moodScore||'—')}</span>`;
+      c2 = esc(e.moodEmotions||'—');
+      c3 = esc(e.moodTrigger||'—');
+      c4 = esc(e.moodCoping||'—');
+    } else if (jtype === 'gratitude') {
+      c1 = esc(e.grat1||'—');
+      c2 = esc(e.grat2||'—');
+      c3 = esc(e.grat3||'—');
+      c4 = esc(e.gratWhy||'—');
+    } else if (jtype === 'anxiety') {
+      c1 = esc(e.anxTrigger||'—');
+      c2 = esc(e.anxThoughts||'—');
+      c3 = esc(e.anxPhysical||'—');
+      c4 = esc(e.anxChallenge||'—');
+    } else if (jtype === 'reflection') {
+      c1 = esc(e.refDay||'—');
+      c2 = esc(e.refWins||'—');
+      c3 = esc(e.refChallenges||'—');
+      c4 = esc(e.refLearning||'—');
+    }
+
+    return `<tr>
+      <td><span class="row-num">${i+1}</span></td>
+      <td><div class="dt">${esc(dt.date)}</div><div class="dt-time">${esc(dt.time)}</div></td>
+      <td>${typeTag}</td>
+      <td><div class="cell-wrap">${c1}</div></td>
+      <td><div class="cell-wrap">${c2}</div></td>
+      <td><div class="cell-wrap">${c3}</div></td>
+      <td><div class="cell-wrap">${c4}</div></td>
+      <td><div class="intensity-stars">${stars(e.intensity)}</div></td>
+    </tr>`;
   }).join('');
 }
 
@@ -8677,13 +8723,6 @@ function updateTherapistStreaks(hist) {
   if(e2) e2.textContent=`🏆 Best: ${bs} days`;
   if(e3) e3.textContent=`📅 ${total} days tracked`;
 }
-
-// Patch viewPatient to also load commitments
-const _origViewPatient = viewPatient;
-window.viewPatient = async function(uid, name) {
-  await _origViewPatient(uid, name);
-  await loadTherapistPatientCommitments(uid);
-};
 
 // ── Landing Page ──
 function enterApp() {
