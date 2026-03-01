@@ -416,6 +416,191 @@ body::before{
 .screen.active{display:flex}
 
 /* ═══════════════════════════════════════════
+   LANDING PAGE
+   ═══════════════════════════════════════════ */
+#landingPage{
+  position:fixed;inset:0;z-index:9999;
+  background:#06060f;
+  display:flex;flex-direction:column;
+  overflow-y:auto;overflow-x:hidden;
+  transition:opacity .6s ease, transform .6s ease;
+}
+#landingPage.hide{
+  opacity:0;transform:translateY(-20px);pointer-events:none;
+}
+.lp-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 40px;position:sticky;top:0;z-index:10;
+  background:rgba(6,6,15,.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.lp-logo{display:flex;align-items:center;gap:12px}
+.lp-logo-icon{
+  width:40px;height:40px;border-radius:12px;
+  background:linear-gradient(135deg,#6d28d9,#a855f7,#e879f9);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  box-shadow:0 8px 24px rgba(109,40,217,.5);
+}
+.lp-logo-name{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:#f0eeff;letter-spacing:-.02em}
+.lp-nav-btn{
+  background:linear-gradient(135deg,#6d28d9,#a855f7);
+  color:#fff;border:none;border-radius:12px;padding:10px 22px;
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(109,40,217,.4);
+}
+.lp-nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(109,40,217,.5)}
+
+/* Hero */
+.lp-hero{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:100px 24px 80px;position:relative;min-height:90vh;
+}
+.lp-hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(100px)}
+.lp-orb-a{width:600px;height:600px;background:radial-gradient(circle,rgba(109,40,217,.4),transparent 70%);top:-10%;left:-15%;animation:orbF 14s ease-in-out infinite}
+.lp-orb-b{width:400px;height:400px;background:radial-gradient(circle,rgba(232,121,249,.25),transparent 70%);bottom:-5%;right:-10%;animation:orbF 10s ease-in-out infinite reverse}
+.lp-orb-c{width:300px;height:300px;background:radial-gradient(circle,rgba(79,70,229,.2),transparent 70%);top:40%;left:55%;animation:orbF 16s ease-in-out infinite 2s}
+.lp-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(109,40,217,.15);border:1px solid rgba(139,92,246,.3);
+  border-radius:99px;padding:6px 16px;margin-bottom:28px;
+  font-size:13px;font-weight:500;color:#c4b5fd;
+}
+.lp-badge-dot{width:7px;height:7px;border-radius:50%;background:#a78bfa;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.lp-hero h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(42px,7vw,82px);
+  font-weight:800;line-height:1.08;letter-spacing:-.03em;
+  color:#f0eeff;margin-bottom:24px;position:relative;z-index:1;
+}
+.lp-hero h1 span{
+  background:linear-gradient(135deg,#a78bfa,#e879f9);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.lp-hero-sub{
+  font-size:clamp(16px,2.2vw,20px);color:rgba(240,238,255,.6);
+  max-width:560px;line-height:1.7;margin-bottom:48px;position:relative;z-index:1;
+}
+.lp-cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
+.lp-cta-primary{
+  display:flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#6d28d9,#a855f7,#e879f9);
+  color:#fff;border:none;border-radius:16px;padding:16px 32px;
+  font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;
+  cursor:pointer;transition:all .25s;
+  box-shadow:0 8px 32px rgba(109,40,217,.5),0 0 0 1px rgba(255,255,255,.1) inset;
+  text-decoration:none;
+}
+.lp-cta-primary:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(109,40,217,.6)}
+.lp-cta-secondary{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  color:#f0eeff;border-radius:16px;padding:16px 28px;
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;
+  cursor:pointer;transition:all .25s;text-decoration:none;
+}
+.lp-cta-secondary:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.lp-android-badge{
+  display:flex;align-items:center;gap:10px;
+  background:#000;border:1px solid rgba(255,255,255,.15);
+  border-radius:14px;padding:10px 20px;text-decoration:none;transition:all .2s;
+}
+.lp-android-badge:hover{border-color:rgba(139,92,246,.5);background:#0a0a18;transform:translateY(-1px)}
+.lp-android-badge svg{width:22px;height:22px;flex-shrink:0}
+.lp-android-badge-text{display:flex;flex-direction:column}
+.lp-android-badge-small{font-size:10px;color:rgba(255,255,255,.6);font-weight:400;letter-spacing:.05em}
+.lp-android-badge-big{font-size:15px;color:#fff;font-weight:600;letter-spacing:-.01em}
+
+/* Stats */
+.lp-stats{
+  display:flex;gap:0;justify-content:center;flex-wrap:wrap;
+  margin-top:64px;position:relative;z-index:1;
+  border:1px solid rgba(255,255,255,.08);border-radius:20px;
+  background:rgba(255,255,255,.03);backdrop-filter:blur(10px);
+  overflow:hidden;max-width:560px;width:100%;
+}
+.lp-stat{flex:1;min-width:120px;padding:20px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.lp-stat:last-child{border-right:none}
+.lp-stat-num{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:#a78bfa;line-height:1}
+.lp-stat-label{font-size:12px;color:rgba(240,238,255,.46);margin-top:4px;font-weight:500}
+
+/* Features */
+.lp-section{padding:80px 24px;max-width:1100px;margin:0 auto;width:100%}
+.lp-section-label{
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#a78bfa;margin-bottom:16px;text-align:center;
+}
+.lp-section h2{
+  font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:700;
+  color:#f0eeff;text-align:center;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px;
+}
+.lp-section-sub{font-size:17px;color:rgba(240,238,255,.55);text-align:center;max-width:500px;margin:0 auto 56px;line-height:1.6}
+.lp-features{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.lp-feature{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;padding:28px;transition:all .25s;position:relative;overflow:hidden;
+}
+.lp-feature::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--feat-color,linear-gradient(90deg,#6d28d9,#a855f7));
+  border-radius:20px 20px 0 0;
+}
+.lp-feature:hover{border-color:rgba(139,92,246,.25);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.lp-feat-icon{font-size:32px;margin-bottom:16px}
+.lp-feat-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:#f0eeff;margin-bottom:8px}
+.lp-feat-desc{font-size:14px;color:rgba(240,238,255,.55);line-height:1.65}
+
+/* Download section */
+.lp-download{
+  background:linear-gradient(135deg,rgba(109,40,217,.2),rgba(232,121,249,.1));
+  border:1px solid rgba(139,92,246,.2);border-radius:28px;
+  padding:60px 40px;text-align:center;margin:0 24px 80px;
+  position:relative;overflow:hidden;
+}
+.lp-download::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(109,40,217,.25),transparent 70%);
+  pointer-events:none;
+}
+.lp-download h2{
+  font-family:'Fraunces',serif;font-size:clamp(28px,4vw,44px);
+  font-weight:700;color:#f0eeff;margin-bottom:16px;position:relative;z-index:1;
+}
+.lp-download p{font-size:17px;color:rgba(240,238,255,.6);margin-bottom:36px;position:relative;z-index:1;line-height:1.6}
+.lp-download-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;z-index:1}
+.lp-apk-btn{
+  display:flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,#6d28d9,#a855f7);
+  color:#fff;text-decoration:none;border-radius:16px;padding:16px 28px;
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;
+  transition:all .25s;box-shadow:0 8px 32px rgba(109,40,217,.45);
+}
+.lp-apk-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(109,40,217,.6)}
+.lp-install-note{
+  margin-top:20px;font-size:13px;color:rgba(240,238,255,.38);
+  position:relative;z-index:1;
+}
+
+/* Footer */
+.lp-footer{
+  border-top:1px solid rgba(255,255,255,.07);padding:32px 40px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.lp-footer-logo{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:rgba(240,238,255,.6)}
+.lp-footer-links{display:flex;gap:24px}
+.lp-footer-links a{font-size:13px;color:rgba(240,238,255,.4);text-decoration:none;transition:color .2s}
+.lp-footer-links a:hover{color:#a78bfa}
+.lp-footer-copy{font-size:12px;color:rgba(240,238,255,.25);width:100%}
+
+@media(max-width:600px){
+  .lp-nav{padding:16px 20px}
+  .lp-hero{padding:80px 20px 60px;min-height:auto}
+  .lp-download{padding:40px 24px;margin:0 16px 60px}
+  .lp-footer{padding:24px 20px}
+  .lp-stat{min-width:100px;padding:16px}
+}
+
+/* ═══════════════════════════════════════════
    AUTH
    ═══════════════════════════════════════════ */
 #authScreen{
@@ -1286,6 +1471,146 @@ tbody td{padding:13px 16px;font-size:13px;color:var(--text2);vertical-align:top}
 </style>
 </head>
 <body>
+
+<!-- ════════════════════════════════════════
+     LANDING PAGE
+     ════════════════════════════════════════ -->
+<div id="landingPage">
+
+  <!-- Nav -->
+  <nav class="lp-nav">
+    <div class="lp-logo">
+      <div class="lp-logo-icon">🧠</div>
+      <span class="lp-logo-name">Innerly</span>
+    </div>
+    <button class="lp-nav-btn" onclick="enterApp()">Open App →</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="lp-hero">
+    <div class="lp-hero-orb lp-orb-a"></div>
+    <div class="lp-hero-orb lp-orb-b"></div>
+    <div class="lp-hero-orb lp-orb-c"></div>
+
+    <div class="lp-badge">
+      <span class="lp-badge-dot"></span>
+      Your psychological journaling space
+    </div>
+
+    <h1>Journal your mind.<br><span>Understand yourself.</span></h1>
+
+    <p class="lp-hero-sub">
+      Innerly combines psychological assessments, mood tracking, and evidence-based 
+      journaling tools to help you explore and understand your inner world.
+    </p>
+
+    <div class="lp-cta-row">
+      <button class="lp-cta-primary" onclick="enterApp()">
+        ✦ Start Journaling Free
+      </button>
+      <a class="lp-android-badge" href="/innerly.apk" download="Innerly.apk">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.523 15.341a.73.73 0 0 1-.73.73H7.207a.73.73 0 0 1-.73-.73V8.883c0-.403.327-.73.73-.73h9.586c.403 0 .73.327.73.73v6.458z" fill="#fff" opacity=".3"/>
+          <path d="M3.274 7.2A.73.73 0 0 0 2.544 7.93v8.14c0 .403.327.73.73.73s.73-.327.73-.73V7.93a.73.73 0 0 0-.73-.73zM20.726 7.2a.73.73 0 0 0-.73.73v8.14c0 .403.327.73.73.73s.73-.327.73-.73V7.93a.73.73 0 0 0-.73-.73zM14.795 2.09l.97-1.68a.2.2 0 0 0-.346-.2l-.981 1.699A6.26 6.26 0 0 0 12 1.6c-.84 0-1.636.173-2.358.483L8.582.21a.2.2 0 0 0-.347.2l.97 1.68A6.21 6.21 0 0 0 5.757 6.69h12.486A6.21 6.21 0 0 0 14.795 2.09zM9.8 4.6a.6.6 0 1 1 0-1.2.6.6 0 0 1 0 1.2zm4.4 0a.6.6 0 1 1 0-1.2.6.6 0 0 1 0 1.2z" fill="#fff"/>
+          <path d="M5.757 7.42v10.517a1.46 1.46 0 0 0 1.46 1.46h.73v3.14a.73.73 0 0 0 1.46 0v-3.14h1.46v3.14a.73.73 0 0 0 1.46 0v-3.14h1.46v3.14a.73.73 0 0 0 1.46 0v-3.14h.73a1.46 1.46 0 0 0 1.46-1.46V7.42H5.757z" fill="#fff"/>
+        </svg>
+        <div class="lp-android-badge-text">
+          <span class="lp-android-badge-small">DOWNLOAD FOR</span>
+          <span class="lp-android-badge-big">Android</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="lp-stats">
+      <div class="lp-stat">
+        <div class="lp-stat-num">25+</div>
+        <div class="lp-stat-label">Assessments</div>
+      </div>
+      <div class="lp-stat">
+        <div class="lp-stat-num">∞</div>
+        <div class="lp-stat-label">Journal Entries</div>
+      </div>
+      <div class="lp-stat">
+        <div class="lp-stat-num">100%</div>
+        <div class="lp-stat-label">Private & Secure</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <div class="lp-section">
+    <div class="lp-section-label">What's inside</div>
+    <h2>Everything your mind needs</h2>
+    <p class="lp-section-sub">Built on evidence-based psychology, designed for real self-understanding</p>
+
+    <div class="lp-features">
+      <div class="lp-feature" style="--feat-color:linear-gradient(90deg,#6d28d9,#8b5cf6)">
+        <div class="lp-feat-icon">📔</div>
+        <div class="lp-feat-title">Psychological Journaling</div>
+        <div class="lp-feat-desc">Structured prompts rooted in CBT, schema therapy, and mindfulness to help you process emotions and patterns deeply.</div>
+      </div>
+      <div class="lp-feature" style="--feat-color:linear-gradient(90deg,#0891b2,#06b6d4)">
+        <div class="lp-feat-icon">📊</div>
+        <div class="lp-feat-title">Mood & Emotion Tracking</div>
+        <div class="lp-feat-desc">Track your emotional landscape over time with beautiful charts. Spot triggers, patterns, and progress at a glance.</div>
+      </div>
+      <div class="lp-feature" style="--feat-color:linear-gradient(90deg,#be185d,#ec4899)">
+        <div class="lp-feat-icon">🧪</div>
+        <div class="lp-feat-title">Clinical Assessments</div>
+        <div class="lp-feat-desc">PHQ-9, GAD-7, PCL-5, Big Five, MBTI and 20+ more validated psychological screening tools in one place.</div>
+      </div>
+      <div class="lp-feature" style="--feat-color:linear-gradient(90deg,#b45309,#f59e0b)">
+        <div class="lp-feat-icon">🧠</div>
+        <div class="lp-feat-title">Learn Psychology</div>
+        <div class="lp-feat-desc">Explore disorders, cognitive distortions, attachment styles, schemas, and therapeutic approaches in plain language.</div>
+      </div>
+      <div class="lp-feature" style="--feat-color:linear-gradient(90deg,#0f766e,#2dd4bf)">
+        <div class="lp-feat-icon">🔒</div>
+        <div class="lp-feat-title">Private & Encrypted</div>
+        <div class="lp-feat-desc">Your journal is yours alone. Secured by Firebase Authentication with auto sign-out for extra peace of mind.</div>
+      </div>
+      <div class="lp-feature" style="--feat-color:linear-gradient(90deg,#7c3aed,#e879f9)">
+        <div class="lp-feat-icon">📱</div>
+        <div class="lp-feat-title">Works Everywhere</div>
+        <div class="lp-feat-desc">Use it in your browser or install on Android for a native app experience — always in sync via the cloud.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download Section -->
+  <div style="max-width:1100px;margin:0 auto;width:100%;padding:0 24px">
+    <div class="lp-download">
+      <h2>Take Innerly everywhere 📱</h2>
+      <p>Install the Android app for faster loading, offline access,<br>and a native app experience — completely free.</p>
+      <div class="lp-download-btns">
+        <a class="lp-apk-btn" href="/innerly.apk" download="Innerly.apk">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"/></svg>
+          Download APK for Android
+        </a>
+        <button class="lp-cta-secondary" onclick="enterApp()" style="border-radius:16px">
+          🌐 Use in Browser Instead
+        </button>
+      </div>
+      <p class="lp-install-note">
+        After downloading, tap the APK and enable "Install from unknown sources" if prompted.<br>
+        Android 5.0+ required · ~2MB · No ads · No subscriptions
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="lp-logo-name lp-footer-logo">Innerly ✦</div>
+    <div class="lp-footer-links">
+      <a href="#" onclick="enterApp();return false">Open App</a>
+      <a href="/innerly.apk" download>Download Android</a>
+      <a href="#features">Features</a>
+    </div>
+    <div class="lp-footer-copy">© 2025 Innerly · Your psychological journaling space · Not a substitute for professional mental health care.</div>
+  </footer>
+
+</div>
+<!-- END LANDING PAGE -->
 
 <!-- LOADER -->
 <div class="loader" id="loader">
@@ -7484,6 +7809,25 @@ function openLearnDetail(type, idx) {
   document.getElementById('learnDetailOverlay').classList.add('open');
 }
 function closeLearnDetail() { document.getElementById('learnDetailOverlay').classList.remove('open'); }
+
+// ── Landing Page ──
+function enterApp() {
+  const lp = document.getElementById('landingPage');
+  lp.classList.add('hide');
+  setTimeout(() => { lp.style.display = 'none'; }, 600);
+}
+
+// Show landing page only on first visit; skip if already authenticated
+(function() {
+  const lp = document.getElementById('landingPage');
+  // If user came directly to app (e.g. from Android TWA), skip landing
+  const isTWA = window.matchMedia('(display-mode: standalone)').matches ||
+                window.navigator.standalone ||
+                document.referrer.includes('android-app://');
+  if (isTWA) {
+    lp.style.display = 'none';
+  }
+})();
 </script>
 
 <!-- Syndrome Detail Modal -->
